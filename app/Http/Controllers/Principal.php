@@ -10,7 +10,7 @@ class Principal extends Controller
         return View("principal");
     }
 
-    function teste (){
-        echo "Testado com sucesso";
-    }
+   function perfilView(){
+    return View('perfil');
+   }
 }
