@@ -13,4 +13,12 @@ class Principal extends Controller
    function perfilView(){
     return View('perfil');
    }
+
+   function loginPag(){
+    return View('login');
+   }
+
+   function cadastroPag(){
+    return View('cadastro');
+   }
 }
