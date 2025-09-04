@@ -151,7 +151,7 @@
 
     <div class="cards">
 
-      <a class="card">
+      <a class="card" href="{{ route('alimentos') }}">
         <div class="card-titulo">
           <div class="icon">
           <span class="material-symbols-outlined">

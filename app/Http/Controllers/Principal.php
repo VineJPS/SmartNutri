@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class Principal extends Controller
 {
     function principal(){
-        return View("principal");
+        return View('principal');
     }
 
    function perfilView(){
@@ -20,5 +20,13 @@ class Principal extends Controller
 
    function cadastroPag(){
     return View('cadastro');
+   }
+
+   function alimentos(){
+    return View('alimentos');
+   }
+ 
+   function historico(){
+    return View('historico');
    }
 }
