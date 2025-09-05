@@ -11,6 +11,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     a{
       text-decoration: none;
@@ -71,6 +72,10 @@
         background: #D1C1C120;
         border: 1px solid #00000030;
     }
+    input{
+        padding: 1rem;
+    }
+
     option{
         background: #D1C1C150;
         border: 1px solid #00000030;
@@ -84,6 +89,7 @@
         font-size: 16px;
         cursor: pointer;
         transition: 0.4s;
+        padding: 0.4rem;
     }
     input[type="submit"]:hover{
         background-color: #00000015;
@@ -93,19 +99,20 @@
     .resul{
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-around;
     }
-    .calcResul h2{
+
+    .calcResul h3{
         padding-bottom: 1rem; 
         color: #4CAF50;
         text-align: center;
-
     }
 
-    .imc,.calorias{
+    .imc,.calorias,.agua{
         display: flex;
         flex-direction: column;
         gap: 0.3rem;
+        text-align: center;
     }
 
     .valores{
@@ -145,19 +152,19 @@
         </div>
             <hr/>
         <form class="body">
-            <h2>Peso (kg):</h2>
+            <h3>Peso (kg):</h3>
             <input type="number" placeholder="Ex: 65" min="1" max="3">
             
-            <h2>Gênero:</h2>
+            <h3>Gênero:</h3>
             <select id="genero">
                 <option name="feminino" id="feminino">Feminino</option>
                 <option name="masculino" id="masculino">Masculino</option>
             </select>
 
-            <h2>Altura (cm):</h2>
+            <h3>Altura (cm):</h3>
             <input type="number" placeholder="Ex: 180" min="1" max="999">
 
-            <h2>Idade:</h2>
+            <h3>Idade:</h3>
             <input type="number" placeholder="Ex: 25" min="1" max="99">
 <br/>
             <input type="submit" value="Calcular">
@@ -167,7 +174,7 @@
     </div>
 
     <div class="calcResul">
-        <h2>Seus Resultado</h2>
+        <h3>Seus Resultado</h3>
         <div class="resul">
             <div class="imc">
                 <h4>Índice de Massa Corporal (IMC)</h4>
@@ -175,6 +182,10 @@
             </div>
             <div class="calorias">
                 <h4>Caloria Recomendada por Dia</h4>
+                <h4 class="valores">4500</h4>
+            </div>
+            <div class="agua">
+                <h4>Água Recomendada por Dia</h4>
                 <h4 class="valores">4500</h4>
             </div>
         </div>

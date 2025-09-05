@@ -17,6 +17,10 @@
 <style>
     html,body{
         height: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body{
+        color: #333;
     }
     header{
       background: #FFF;

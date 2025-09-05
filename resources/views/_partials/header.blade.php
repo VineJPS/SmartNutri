@@ -24,6 +24,10 @@
 <style>
     html,body{
         height: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body{
+        color: #333;
     }
     header{
       background: #FFF;
@@ -60,7 +64,7 @@
       width: 100%;
       background: #333333;
       padding: 2rem;
-      color: white;
+      color: white !important;
       text-align: center;
       transition: 0.4s;
     }

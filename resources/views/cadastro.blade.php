@@ -10,9 +10,13 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         html{
             background: #E0F7FA;
+        }
+        body{
+            color: #333;
         }
         main{
             padding: 3rem 0;
