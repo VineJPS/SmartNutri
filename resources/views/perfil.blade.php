@@ -163,13 +163,19 @@
             }
 
         }
+        .seta{
+            color: white;
+            text-decoration: none
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <header>
-            <i class="ph ph-arrow-left" id='seta'></i>
+            <a href="{{ route('index') }}" class="seta">
+                <i class="ph ph-arrow-left" id='seta'></i>
+            </a>
             <div class="dadosUsuario">
                 <div class="img">
                     <img class="IMGperfil"

@@ -18,6 +18,7 @@ Route::get('/', [App\Http\Controllers\Principal::class, 'principal'])->name('ind
 Route::get('/alimentos', [App\Http\Controllers\Principal::class, 'alimentos'])->name('alimentos');
 Route::get('/historico', [App\Http\Controllers\Principal::class, 'historico'])->name('historico');
 Route::get('/perfil', [App\Http\Controllers\Principal::class, 'perfilView'])->name('perfil');
+Route::get('/calculadora', [App\Http\Controllers\Principal::class, 'calc'])->name('calc');
 
 Route::get('/login', [App\Http\Controllers\Principal::class, 'loginPag'])->name('login');
 Route::get('/cadastro', [App\Http\Controllers\Principal::class, 'cadastroPag'])->name('cadastro');

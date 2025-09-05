@@ -55,6 +55,10 @@
       border-radius: 10px;
       cursor: pointer;
       color: black;
+      transition: 0.4s;
+    }
+    .card:hover{
+      transform: scale(1.05);
     }
     .card-titulo{
       color: #4CAF50;
@@ -135,7 +139,7 @@
         </div>
       </a>
       
-      <a class="card">
+      <a class="card" href="{{ route('calc') }}">
         <div class="card-titulo">
           <div class="icon">
             <span class="material-symbols-outlined">
@@ -153,7 +157,7 @@
         </div>
       </a>
 
-      <div class="card" style="opacity: 0%;"></div>
+      <div class="card" style="opacity: 0%; cursor: default;"></div>
 
     </div>
   </main>

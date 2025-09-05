@@ -29,4 +29,7 @@ class Principal extends Controller
    function historico(){
     return View('historico');
    }
+   function calc(){
+    return View('calc');
+   }
 }

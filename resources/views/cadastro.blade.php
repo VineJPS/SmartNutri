@@ -15,7 +15,7 @@
             background: #E0F7FA;
         }
         main{
-
+            padding: 3rem 0;
             display: flex;
             justify-content: center;
             align-items:center
@@ -84,6 +84,13 @@
             margin-top: 1rem;
             padding: 1rem;
             border-radius: 10px;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover{
+            background: #fff;
+            color: #4CAF50;
+            border: 1px solid #00000030;
         }
         .text{
             text-align: center;
@@ -97,9 +104,23 @@
                 width: 90%;
             }
         }
+
+        .seta{
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 1rem;
+            cursor: pointer;
+            color: #4CAF50;
+        }
     </style>
 </head>
 <body>
+    <a href="{{ route('index') }}" class="seta">
+        <span class="material-symbols-outlined">
+            arrow_back
+        </span>
+    </a>
     <main>
         <div class="card-login">
             <div class="header">
@@ -112,7 +133,7 @@
                 <div class="campos">
                     <label for="nome">
                         <span class="material-symbols-outlined">
-                            mail
+                        person
                         </span>
                     </label>
                     <input type="text" name="nome" id="nome" placeholder="Digite seu nome completo...">

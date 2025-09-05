@@ -33,7 +33,7 @@
   </style>
 </head>
 <body>
-  @extends('_partials/main')
+  @extends('_partials/header')
 
 @section('conteudo')
 

@@ -19,7 +19,7 @@
             width: 100vw;
             display: flex;
             justify-content: center;
-            align-items:center
+            align-items:center;
         }
         .card-login{
             background: #FFFFFF;
@@ -84,6 +84,13 @@
             margin-top: 1rem;
             padding: 1rem;
             border-radius: 10px;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        input[type="submit"]:hover{
+            background: #fff;
+            color: #4CAF50;
+            border: 1px solid #00000030;
         }
         .text{
             text-align: center;
@@ -97,9 +104,22 @@
                 width: 90%;
             }
         }
+        .seta{
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 1rem;
+            cursor: pointer;
+            color: #4CAF50;
+        }
     </style>
 </head>
 <body>
+    <a href="{{ route('index') }}" class="seta">
+        <span class="material-symbols-outlined">
+            arrow_back
+        </span>
+    </a>
     <main>
         <div class="card-login">
             <div class="header">
