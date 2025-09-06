@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('gramas');
             $table->decimal('calorias');
 
-            $table->foreign('user_id')
+            $table->foreignId('user_id')
               ->references('id')
               ->on('users')
               ->onDelete('cascade');

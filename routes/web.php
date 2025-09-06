@@ -20,8 +20,11 @@ Route::get('/historico', [App\Http\Controllers\Principal::class, 'historico'])->
 Route::get('/perfil', [App\Http\Controllers\Principal::class, 'perfilView'])->name('perfil');
 Route::get('/calculadora', [App\Http\Controllers\Principal::class, 'calc'])->name('calc');
 
-Route::get('/login', [App\Http\Controllers\Principal::class, 'loginPag'])->name('login');
+Route::get('/login', [App\Http\Controllers\Principal::class, 'loginPag'])->name('pagina-login');
+Route::post('/login', [App\Http\Controllers\Usuario::class, 'autenticarLogin'])->name('login');
+
 Route::get('/cadastro', [App\Http\Controllers\Principal::class, 'cadastroPag'])->name('cadastro');
+Route::post('/cadastro', [App\Http\Controllers\Usuario::class, 'criarUsuario'])->name('criarUsuario');
 
 // Conexão
 Route::get('/conectar', [App\Http\Controllers\Usuario::class, 'conectar']);

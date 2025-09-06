@@ -132,7 +132,8 @@
                 <p>Cuidando da sua saúde</p>
             </div>
 
-            <form action="">
+            <form action="{{ route('criarUsuario') }}" method="POST">
+                @csrf
                 <h3>Nome Completo</h3>
                 <div class="campos">
                     <label for="nome">
@@ -140,7 +141,7 @@
                         person
                         </span>
                     </label>
-                    <input type="text" name="nome" id="nome" placeholder="Digite seu nome completo...">
+                    <input type="text" name="name" id="name" placeholder="Digite seu nome completo...">
                 </div>
 
                 <h3>E-mail</h3>

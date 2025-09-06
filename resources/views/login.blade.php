@@ -132,7 +132,8 @@
                 <p>Cuidando da sua saúde</p>
             </div>
 
-            <form action="">
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
                 <h3>E-mail</h3>
                 <div class="campos">
                     <label for="email">
@@ -150,7 +151,7 @@
                             lock
                         </span>
                     </label>
-                    <input type="password" name="senha" id="senha" placeholder="Digite sua senha...">
+                    <input type="password" name="password" id="password" placeholder="Digite sua senha...">
                 </div>
 
                 <div class="button">
