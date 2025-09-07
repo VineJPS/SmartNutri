@@ -143,9 +143,10 @@
             <p>Calcule suas necessidades de calorias, águas e índice corporal</p>
         </div>
             <hr/>
-        <form class="body">
+        <form class="body" method="POST" action="{{ route('calc.calcular') }}">
+            @csrf
             <h3>Peso (kg):</h3>
-            <input type="number" placeholder="Ex: 65" min="1" max="400">
+            <input type="number" name="peso" placeholder="Ex: 65" min="1" max="400" required>
             
             <h3>Gênero:</h3>
             <select id="genero">
@@ -154,32 +155,36 @@
             </select>
 
             <h3>Altura (cm):</h3>
-            <input type="number" placeholder="Ex: 180" min="1" max="999">
+            <input type="number" name="altura" placeholder="Ex: 180" min="1" max="999" required>
 
             <h3>Idade:</h3>
-            <input type="number" placeholder="Ex: 25" min="1" max="99">
+            <input type="number" name="idade" placeholder="Ex: 25" min="1" max="99" required>
 <br/>
             <input type="submit" value="Calcular">
         </form>
 
         
     </div>
-
+    @if(isset($imc))
     <div class="calcResul">
         <h3>Seus Resultado</h3>
         <div class="resul">
             <div class="imc">
                 <h4>Índice de Massa Corporal (IMC)</h4>
-                <h4><span class="valores">24.6</span> Classificação: Peso Normal</h4>
+                <h4>
+                    <span class="valores">{{ number_format($imc, 1) }}</span> 
+                    Classificação: {{ $classificacao }}
+                </h4>
             </div>
             <div class="calorias">
                 <h4>Caloria Recomendada por Dia</h4>
-                <h4 class="valores">4500</h4>
+                <h4 class="valores">{{ round($calorias) }} kcal</h4>
             </div>
             <div class="agua">
                 <h4>Água Recomendada por Dia</h4>
-                <h4 class="valores">4500</h4>
+                <h4 class="valores">{{ round($agua) }} ml</h4>
             </div>
         </div>
     </div>
+    @endif
 @endsection

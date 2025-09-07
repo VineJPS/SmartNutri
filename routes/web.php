@@ -19,6 +19,7 @@ Route::get('/alimentos', [App\Http\Controllers\Principal::class, 'alimentos'])->
 Route::get('/historico', [App\Http\Controllers\Principal::class, 'historico'])->name('historico');
 Route::get('/perfil', [App\Http\Controllers\Principal::class, 'perfilView'])->name('perfil');
 Route::get('/calculadora', [App\Http\Controllers\Principal::class, 'calc'])->name('calc');
+Route::post('/calculadora', [App\Http\Controllers\Calculadora::class, 'calcular'])->name('calc.calcular');
 
 Route::get('/login', [App\Http\Controllers\Principal::class, 'loginPag'])->name('pagina-login');
 Route::post('/login', [App\Http\Controllers\Usuario::class, 'autenticarLogin'])->name('login');

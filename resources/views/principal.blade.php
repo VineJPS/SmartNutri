@@ -30,7 +30,8 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      padding: 4rem;
+      padding: 2rem;
+      margin-top: 1rem;
     }
 
     .texto h1{
@@ -65,6 +66,9 @@
     .card:hover{
       transform: scale(1.05);
     }
+    .caloria:hover{
+      transform: scale(1.01);
+    }
     .card-titulo{
       color: #4CAF50;
       display: flex;
@@ -74,6 +78,11 @@
     }
     .icon span{
       font-size: 28px;
+    }
+    .icon{
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .nome-card h1{
       font-size: 24px;
@@ -165,6 +174,27 @@
         padding: .5rem;
       }
     }
+
+    .caloria>.card-titulo{
+      justify-content: start;
+    }
+    .consul{
+      display: flex;
+      justify-content: space-between;
+    }
+    .linha{
+      background: #E0E0E0;
+      width: 100%;
+      height: 18px;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+    }
+    .progresso{
+      background: green;
+      height: 18px;
+      width: 30%;
+      border-radius: 15px;
+    }
   </style>
 </head>
 <body>
@@ -181,12 +211,35 @@
   <main>
     <div class="texto">
       <h1>SmartNutri</h1>
-      <p>
-        Acompanhe sua alimentação, calcule suas necessidades nutricionais e mantenha um histórico completo de seus hábitos alimentares.
-      </p>
     </div>
 
     <div class="cards">
+
+      <div class="card caloria" style="width: 95%; height: auto; cursor: default;">
+        <div class="card-titulo">
+          <div class="icon">
+            <span class="material-symbols-outlined">
+              target
+            </span>
+          </div>
+          <div class="nome-card">
+            <h1 style="font-size: 20px;">Sua Meta de Calorias</h1>
+          </div>
+        </div>
+        <div class="corpo-card" style="margin: 10px 0; border-radius: 20px;background: #C8E6C9; height: 160px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+          <p style="font-size: 20px;">
+            Meta diária
+          </p>
+          <h2 style="font-size: 40px; color: #388E3C;">2000 Kcal</h2>
+        </div>
+        <div class="linha">
+          <div class="progresso"></div>
+        </div>
+        <div class="consul">
+          <p>Consumido: 750kcal</p>
+          <p>Restante: 1250kcal</p>
+        </div>
+      </div>
 
       <a class="card" href="{{ route('alimentos') }}">
         <div class="card-titulo">
@@ -240,7 +293,23 @@
         </div>
       </a>
 
-      <div class="card" style="opacity: 0%; cursor: default;"></div>
+      <div class="card">
+        <div class="card-titulo">
+          <div class="icon">
+            <span class="material-symbols-outlined">
+              target
+            </span>
+          </div>
+          <div class="nome-card">
+            <h1>Meta de Calorias</h1>
+          </div>
+        </div>
+        <div class="corpo-card">
+          <p>
+            Altera sua meta de calorias.
+          </p>
+        </div>
+      </div>
 
     </div>
   </main>
