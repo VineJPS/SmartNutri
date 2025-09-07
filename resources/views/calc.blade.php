@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+@extends('app')
 
-  <title>SmartNutri</title>
+@section('title', 'Calculadora')
+
+@section('css')
   <style>
     *{
       margin: 0;
@@ -136,15 +133,10 @@
             width: 100%;
         }
     }
-
-
   </style>
-</head>
-<body>
-@extends('_partials/header')
+@endsection
 
-@section('conteudo')
-  <main>
+@section('content')
     <div class="calc">
         <div class="header">
             <h1>Calculadora Nutricional</h1>
@@ -153,7 +145,7 @@
             <hr/>
         <form class="body">
             <h3>Peso (kg):</h3>
-            <input type="number" placeholder="Ex: 65" min="1" max="3">
+            <input type="number" placeholder="Ex: 65" min="1" max="400">
             
             <h3>Gênero:</h3>
             <select id="genero">
@@ -190,7 +182,4 @@
             </div>
         </div>
     </div>
-  </main>
-</body>
-</html>
 @endsection
