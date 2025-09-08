@@ -167,6 +167,20 @@
             color: white;
             text-decoration: none
         }
+
+        form{
+            display: flex;
+        }
+
+        form button{
+            border: none;
+            background: transparent;
+            display: flex;
+            flex-direction: row;
+            column-gap: .7em;
+            align-items: center;
+        }
+
     </style>
 </head>
 
@@ -232,8 +246,15 @@
             </div>
         </main>
         <footer>
-            <i id="iconLogout" class="ph ph-sign-out"></i>
-            <h3 class="logout">Sair da Conta</h3>
+
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit">
+                    <i id="iconLogout" class="ph ph-sign-out"></i>
+                    <h3 class="logout">Sair da Conta</h3>
+                </button>
+            </form>
+            
         </footer>
     </div>
 </body>

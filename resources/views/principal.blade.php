@@ -117,31 +117,23 @@
         color: #4CAF50;
     }
 
-    .perfil-1{
-      display: flex;
-      gap: 1rem;
-      align-items: center;
+    header .perfil{
+        background: #4CAF50;
+        width: 35px;
+        height: 35px;
+        border-radius: 100px;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s;
     }
-    .perfil-1 button{
-      background: transparent;
-      color: #4CAF50;
-      border: 3px solid #4CAF50;
-      border-radius: 200px;
-      width: auto;
-      padding: 0 1.5rem;
-      height: 50px;
-      font-size: 16px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      transition: 0.4s;
+
+    header .perfil:hover{
+        transform: scale(1.3);
     }
-    .perfil-1 button:hover{
-      color: #FFFFFF;
-      background: #4CAF50;
-      transform: scale(1.1);
-    }
+
     .cadastro button{
       background: #4CAF50;
       color: #FFFFFF;
@@ -202,10 +194,11 @@
   <header>
       <h1><a href="{{ route('index') }}">SmartNutri</a></h1>
 
-      <div class="perfil-1">
-          <a href="{{ route('login') }}"><button>Login</button></a>
-          <a href="{{ route('cadastro') }}" class="cadastro"><button>Cadastre-se</button></a>
-      </div>
+      <a href="{{ route('perfil') }}" class="perfil">
+        <span class="material-symbols-outlined">
+            person
+        </span>
+      </a>
   </header>
 
   <main>
@@ -259,7 +252,7 @@
         </div>
       </a>
 
-      <a class="card">
+      <a class="card" href="{{ route('historico') }}">
         <div class="card-titulo">
           <div class="icon">
             <span class="material-symbols-outlined">history</span>

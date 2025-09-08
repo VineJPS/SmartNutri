@@ -51,7 +51,7 @@
 
     .card-header .item{
         display: flex;
-        width: 90%;
+        width: 88%;
         justify-content: baseline;
     }
 
@@ -74,7 +74,7 @@
     }
 
     hr{
-        width: 90%;
+        width: 92%;
         border-color: #4CAF50;
     }
 
@@ -185,7 +185,8 @@
 
 @section('content')
 
-<form action="alimentos" method="get">
+<form action="{{ route('alimentos.registrar') }}" method="post">
+    @csrf
     <div class="card">
 
         <div class="card-header">
@@ -228,10 +229,11 @@
 
             <div class="item">
                 <label for="nome"><span class="nome">Alimentos:</span></label>
-                <input type="decimal" name="nome" placeholder="Quantas gramas foram consumidas do alimento" required>
+                <input type="text" name="nome" placeholder="Nome do alimento" required>
             </div>
 
         </div>
+        
 
         <div class="card-footer">
             <div class="button">

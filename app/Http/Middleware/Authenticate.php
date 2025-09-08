@@ -12,6 +12,17 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
-        return $request->expectsJson() ? null : route('login');
+        // Verifica se o usuario esta logado
+        // Se for uma requisição API/JSON, retorna null
+        if ($request->expectsJson()) {
+            return null;
+        }
+        
+        // Isso evita o loop infinito
+        if (!$request->is('login') && !$request->is('logout') && !$request->is('cadastro')) {
+            return route('index'); // ← Redireciona para a página guest
+        }
+        
+        return route('login');
     }
 }

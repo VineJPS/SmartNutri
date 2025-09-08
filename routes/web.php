@@ -13,23 +13,41 @@ use App\Http\Middleware\LogAcessoMiddleware;
 |
 */
 
-// Principal
-Route::get('/', [App\Http\Controllers\Principal::class, 'principal'])->name('index');
-Route::get('/alimentos', [App\Http\Controllers\Principal::class, 'alimentos'])->name('alimentos');
-Route::get('/historico', [App\Http\Controllers\Principal::class, 'historico'])->name('historico');
-Route::get('/perfil', [App\Http\Controllers\Principal::class, 'perfilView'])->name('perfil');
-Route::get('/calculadora', [App\Http\Controllers\Principal::class, 'calc'])->name('calc');
-Route::post('/calculadora', [App\Http\Controllers\Calculadora::class, 'calcular'])->name('calc.calcular');
+    // Home
+    Route::get('/', [App\Http\Controllers\Principal::class, 'principal'])->name('index');
 
-Route::get('/login', [App\Http\Controllers\Principal::class, 'loginPag'])->name('pagina-login');
-Route::post('/login', [App\Http\Controllers\Usuario::class, 'autenticarLogin'])->name('login');
+// ---------------- Rotas para visitantes - somente para usuários NÃO LOGADOS
+Route::middleware(['guest'])->group(function () {
 
-Route::get('/cadastro', [App\Http\Controllers\Principal::class, 'cadastroPag'])->name('cadastro');
-Route::post('/cadastro', [App\Http\Controllers\Usuario::class, 'criarUsuario'])->name('criarUsuario');
+// cadastro
+    Route::get('/cadastro', [App\Http\Controllers\Principal::class, 'cadastroPag'])->name('cadastro');
+    Route::post('/cadastro', [App\Http\Controllers\Usuario::class, 'criarUsuario'])->name('criarUsuario');
 
-// Conexão
-Route::get('/conectar', [App\Http\Controllers\Usuario::class, 'conectar']);
-Route::get('/desconectar', [App\Http\Controllers\Usuario::class, 'desconectar']);
+//  login
+    Route::get('/login', [App\Http\Controllers\Principal::class, 'loginPag'])->name('pagina-login');
+    Route::post('/login', [App\Http\Controllers\Usuario::class, 'autenticarLogin'])->name('login');
 
-// Pagina Alimentos
-Route::get('/principal', [App\Http\Controllers\Alimentos::class, 'principal'])->name('voltar');
+});
+
+
+// ---------------- Rotas protegidas - somente para usuários LOGADOS
+Route::middleware(['auth'])->group(function () {
+//  Alimentos
+    Route::get('/alimentos', [App\Http\Controllers\Principal::class, 'alimentos'])->name('alimentos');
+    Route::post('/alimentos', [App\Http\Controllers\Alimentos::class, 'registrar'])->name('alimentos.registrar');
+    Route::get('/alimentos/{id}/editar', [App\Http\Controllers\Alimentos::class, 'edit'])->name('alimentos.edit');
+    Route::put('/alimentos/{id}', [App\Http\Controllers\Alimentos::class, 'update'])->name('alimentos.update');
+
+// Historico de alimentos
+    Route::get('/historico', [App\Http\Controllers\Principal::class, 'historico'])->name('historico');
+    Route::get('/historico/filter', [App\Http\Controllers\Alimentos::class, 'filtrar'])->name('historico.filter');
+    Route::delete('/historico/{id}', [App\Http\Controllers\Alimentos::class, 'remover'])->name('historico.delete');
+
+//  perfil
+    Route::get('/perfil', [App\Http\Controllers\Principal::class, 'perfilView'])->name('perfil');
+    Route::get('/logout', [App\Http\Controllers\Usuario::class, 'logout'])->name('logout');
+
+//  imc calculadora
+    Route::get('/calculadora', [App\Http\Controllers\Principal::class, 'calc'])->name('calc');
+    Route::post('/calculadora', [App\Http\Controllers\Calculadora::class, 'calcular'])->name('calc.calcular');
+});

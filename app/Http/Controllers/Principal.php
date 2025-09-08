@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Alimento;
 
 class Principal extends Controller
 {
     function principal(){
-        return View('principal');
+
+        if(auth()->check()){
+            return View('principal');
+        } else {
+            return View('guest');
+        }
     }
 
    function perfilView(){
@@ -27,7 +33,14 @@ class Principal extends Controller
    }
  
    function historico(){
-    return View('historico');
+       $data = (date('Y-m-d'));
+
+       $alimentos = Alimento::where('user_id', auth()->id())
+       ->whereDate('data', $data)
+       ->orderBy('hora', 'desc')
+       ->get();
+       
+        return view('historico', compact('alimentos', 'data'));
    }
    function calc(){
     return View('calc');

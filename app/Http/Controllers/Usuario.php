@@ -4,53 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash; // ✅ Importante!
 
 class Usuario extends Controller
 {
-    function autenticarLogin(Request $request){
-        //Verificando se os dados estão corretos
-        $erro = '';
-        $regras = [
-            'email' => 'email',
+    function autenticarLogin(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
             'password' => 'required',
-        ];
-
-        $feedback = [
+        ], [
             'email.email' => 'O campo usuário (e-mail) é obrigatório!',
-            'password.required' => 'o campo password é obrigatório!'
-        ];
+            'password.required' => 'O campo password é obrigatório!'
+        ]);
 
-        $request->validate($regras, $feedback);
-
-        //Recuperando os dados do formulario
-        $email = $request->get('email');
-        $password = $request->get('password');
-
-        //Recuperando os dados do BD
-        $user = new User();
-
-        $usuario = $user->where('email', $email)
-            ->where('password', $password)
-            ->get()
-            ->first();
-
-        if (isset($usuario->email)) {
-            session_start();
-            $_SESSION['usuario'] = [
-                'id' => $usuario->id,
-                'name' => $usuario->name,
-                'email' => $usuario->email,
-            ];
-
-            // print_r($_SESSION['usuario']);
-            return View('principal');
-        } else {
-            $erro = 'Usuário e/ou senha não exte(m)';
-            return View('login', ['erro' => $erro]);
+        // Usando auth 
+        if (Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ], $request->remember)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/');
         }
+
+        return view('login', [
+            'erro' => 'Usuário e/ou senha não existe(m)'
+        ]);
     }
-     public function criarUsuario(Request $request)
+
+    public function criarUsuario(Request $request)
     {
         $request->validate([
             'name'      => 'required|string|max:255',
@@ -69,11 +52,26 @@ class Usuario extends Controller
             'confSenha.same'     => 'As senhas não coincidem',
         ]);
 
+        // Criando usuario no bd
         $usuario = User::create([
             'name'     => $request->name,
             'email'    => $request->email,
-            'password' => $request->senha,
+            'password' => Hash::make($request->senha), //hash é um ngc para criptografar a senha
         ]);
-        return view('login');
+
+        // Loga automaticamente após o cadastro
+        Auth::login($usuario);
+
+        return redirect('/');
+    }
+
+    public function logout(Request $request)
+    {
+        // Desloga o usuario
+        Auth::logout();
+        $request->session()->invalidate();      // Invalida a sessão
+        $request->session()->regenerateToken();       // Regenera o token CSRF (configuração de segurança)
+        
+        return redirect('/');
     }
 }
