@@ -55,13 +55,17 @@
       background: #FFFFFF;
       border: 1px solid #dddbdbff;
       width: 45%;
-      height: 160px;
+      height: 180px;
       margin-top: 2rem;
       padding: 2rem;
       border-radius: 10px;
       cursor: pointer;
       color: black;
       transition: 0.4s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
     .card:hover{
       transform: scale(1.05);
@@ -173,6 +177,7 @@
     .consul{
       display: flex;
       justify-content: space-between;
+      width: 100%;
     }
     .linha{
       background: #E0E0E0;
@@ -184,7 +189,7 @@
     .progresso{
       background: green;
       height: 18px;
-      width: 30%;
+      width: 90%;
       border-radius: 15px;
     }
   </style>
@@ -219,7 +224,7 @@
             <h1 style="font-size: 20px;">Sua Meta de Calorias</h1>
           </div>
         </div>
-        <div class="corpo-card" style="margin: 10px 0; border-radius: 20px;background: #C8E6C9; height: 160px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+        <div class="corpo-card" style="width: 100%; margin: 10px 0; border-radius: 20px;background: #C8E6C9; height: 160px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
           <p style="font-size: 20px;">
             Meta diária
           </p>
