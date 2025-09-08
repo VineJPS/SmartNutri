@@ -247,7 +247,7 @@
         </main>
         <footer>
 
-            <form action="{{ route('logout') }}" method="post">
+            <form action="{{ route('logout') }}" method="get">
                 @csrf
                 <button type="submit">
                     <i id="iconLogout" class="ph ph-sign-out"></i>
