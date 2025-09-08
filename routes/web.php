@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/historico/{id}', [App\Http\Controllers\Alimentos::class, 'remover'])->name('historico.delete');
 
 //  perfil
-    Route::get('/perfil', [App\Http\Controllers\Principal::class, 'perfilView'])->name('perfil');
+    Route::get('/perfil', [App\Http\Controllers\Principal::class, 'perfilView'])->name('perfil')->middleware('auth');
     Route::get('/logout', [App\Http\Controllers\Usuario::class, 'logout'])->name('logout');
 
 //  imc calculadora

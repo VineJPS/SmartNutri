@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Alimento;
+use Illuminate\Support\Facades\Auth;
+
 
 class Principal extends Controller
 {
@@ -17,7 +19,8 @@ class Principal extends Controller
     }
 
    function perfilView(){
-    return View('perfil');
+        $usuario = Auth::user();
+        return view('perfil', compact('usuario'));
    }
 
    function loginPag(){
