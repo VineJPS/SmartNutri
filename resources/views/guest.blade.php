@@ -224,7 +224,7 @@
 
     <div class="cards">
 
-      <a class="card" href="{{ route('alimentos') }}">
+      <a class="card" href="{{ route('login') }}">
         <div class="card-titulo">
           <div class="icon">
           <span class="material-symbols-outlined">
@@ -242,7 +242,7 @@
         </div>
       </a>
 
-      <a class="card" href="{{ route('historico') }}">
+      <a class="card" href="{{ route('login') }}">
         <div class="card-titulo">
           <div class="icon">
             <span class="material-symbols-outlined">history</span>
@@ -258,7 +258,7 @@
         </div>
       </a>
       
-      <a class="card" href="{{ route('calc') }}">
+      <a class="card" href="{{ route('login') }}">
         <div class="card-titulo">
           <div class="icon">
             <span class="material-symbols-outlined">
