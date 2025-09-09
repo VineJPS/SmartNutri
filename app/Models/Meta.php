@@ -13,17 +13,18 @@ class Meta extends Model
 
     protected $casts = [];
 
-    public function scopeUpdate($query){
+    public static function calcularProgresso()
+    {
         $user = auth()->user();
-    
-        $meta = 2000; // em breve
+        
+        $meta = 2000; // Valor fixo por enquanto
         $consumidos = Alimento::where('user_id', $user->id)
-                                ->whereDate('data', today())
-                                ->sum('kcal');
+                            ->whereDate('data', today())
+                            ->sum('kcal');
         
         $porcentagem = min(100, max(0, ($consumidos / $meta) * 100));
         $restantes = max(0, $meta - $consumidos);
 
-        return compact('$consumidos','','');
+        return compact('meta', 'consumidos', 'porcentagem', 'restantes');
     }
 }

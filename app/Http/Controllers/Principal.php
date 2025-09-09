@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Alimento;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Alimento;
+use App\Models\Meta;
 
 
 class Principal extends Controller
@@ -12,7 +13,8 @@ class Principal extends Controller
     function principal(){
 
         if(auth()->check()){
-            return View('principal');
+            $progresso = Meta::calcularProgresso();
+            return view('principal', $progresso);
         } else {
             return View('guest');
         }

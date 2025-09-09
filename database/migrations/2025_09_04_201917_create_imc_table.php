@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('resultados', function (Blueprint $table) {
             $table->id();
+            $table->float('imc', 5, 2);
+            $table->integer('calorias');
+            $table->integer('agua'); // em ml
             $table->foreignId('user_id')
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
-            $table->float('imc', 5, 2);
-            $table->integer('calorias');
-            $table->integer('agua'); // em ml
 
             $table->timestamps();
         });
