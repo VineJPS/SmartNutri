@@ -9,3 +9,5 @@
 @section('content')
     {{-- Conteudo html aqui --}}
 @endsection
+
+ return view('principal', compact('meta', 'consumidos', 'porcentagem', 'restantes'));

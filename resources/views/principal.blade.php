@@ -157,14 +157,6 @@
       text-align: center;
     }
 
-
-        @media screen and (min-height: 800px){
-            footer{
-                position: absolute;
-                bottom: 0;
-                left: 0;
-            }
-        }
         @media screen and (max-width: 750px){
       .perfil-1 button{
         padding: .5rem;
@@ -173,6 +165,7 @@
 
     .caloria>.card-titulo{
       justify-content: start;
+      text-align: left;
     }
     .consul{
       display: flex;
