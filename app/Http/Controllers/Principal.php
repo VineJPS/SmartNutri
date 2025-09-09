@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Alimento;
+use Illuminate\Support\Facades\Auth;
 
 class Principal extends Controller
 {
@@ -17,7 +18,8 @@ class Principal extends Controller
     }
 
    function perfilView(){
-    return View('perfil');
+        $usuario = Auth::user();
+        return view('perfil', compact('usuario'));
    }
 
    function loginPag(){
@@ -33,16 +35,16 @@ class Principal extends Controller
    }
  
    function historico(){
-       $data = (date('Y-m-d'));
-
-       $alimentos = Alimento::where('user_id', auth()->id())
-       ->whereDate('data', $data)
-       ->orderBy('hora', 'desc')
-       ->get();
-       
-        return view('historico', compact('alimentos', 'data'));
+        $alimentos = Alimento::doUsuario()->get();
+        session()->flash('ultima_acao', 'limpar');
+        return view('historico', compact('alimentos'));
    }
+
+    function modal(){
+     return View('modal');
+    }
+
    function calc(){
-    return View('calc');
+    return View('calc'); 
    }
 }

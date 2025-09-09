@@ -35,16 +35,19 @@ Route::middleware(['auth'])->group(function () {
 //  Alimentos
     Route::get('/alimentos', [App\Http\Controllers\Principal::class, 'alimentos'])->name('alimentos');
     Route::post('/alimentos', [App\Http\Controllers\Alimentos::class, 'registrar'])->name('alimentos.registrar');
-    Route::get('/alimentos/{id}/editar', [App\Http\Controllers\Alimentos::class, 'edit'])->name('alimentos.edit');
-    Route::put('/alimentos/{id}', [App\Http\Controllers\Alimentos::class, 'update'])->name('alimentos.update');
-
-// Historico de alimentos
+    
+    // Historico de alimentos
     Route::get('/historico', [App\Http\Controllers\Principal::class, 'historico'])->name('historico');
     Route::get('/historico/filter', [App\Http\Controllers\Alimentos::class, 'filtrar'])->name('historico.filter');
     Route::delete('/historico/{id}', [App\Http\Controllers\Alimentos::class, 'remover'])->name('historico.delete');
+    
+    // Modal de edição de alimentos
+    Route::get('/alimentos/{id}/editar', [App\Http\Controllers\Alimentos::class, 'editarModal'])->name('alimentos.editar');
+    Route::put('/alimentos/{id}', [App\Http\Controllers\Alimentos::class, 'update'])->name('alimentos.update');
+    // Route::get('/modal', [App\Http\Controllers\Principal::class, 'modal'])->name('modal');
 
 //  perfil
-    Route::get('/perfil', [App\Http\Controllers\Principal::class, 'perfilView'])->name('perfil');
+    Route::get('/perfil', [App\Http\Controllers\Principal::class, 'perfilView'])->name('perfil')->middleware('auth');
     Route::get('/logout', [App\Http\Controllers\Usuario::class, 'logout'])->name('logout');
 
 //  imc calculadora
