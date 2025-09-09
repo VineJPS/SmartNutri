@@ -189,7 +189,6 @@
     .progresso{
       background: green;
       height: 18px;
-      width: 90%;
       border-radius: 15px;
     }
   </style>
@@ -228,14 +227,14 @@
           <p style="font-size: 20px;">
             Meta diária
           </p>
-          <h2 style="font-size: 40px; color: #388E3C;">2000 Kcal</h2>
+          <h2 style="font-size: 40px; color: #388E3C;">{{ $meta }}kcal</h2>
         </div>
         <div class="linha">
-          <div class="progresso"></div>
+          <div class="progresso" style="width: {{ $porcentagem }}%"></div>
         </div>
         <div class="consul">
-          <p>Consumido: 750kcal</p>
-          <p>Restante: 1250kcal</p>
+          <p>Consumido: {{ $consumidos }}kcal</p>
+          <p>Restante: {{ $restantes }}kcal</p>
         </div>
       </div>
 

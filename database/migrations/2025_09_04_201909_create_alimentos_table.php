@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('nome');
             $table->date('data');
             $table->time('hora');
-            $table->decimal('gramas');
-            $table->decimal('kcal');
+            $table->decimal('gramas', 8, 2);
+            $table->decimal('kcal', 8,2);
 
             $table->foreignId('user_id')
               ->references('id')

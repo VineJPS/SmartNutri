@@ -43,7 +43,7 @@
                 </div>
                 <div class="item">
                     <label for="gramas"><span class="gramas">Quantidade (g):</span></label>
-                    <input type="decimal" name="gramas" value="{{ $alimento->gramas }}" required>
+                    <input type="number" step="0.001" name="gramas" value="{{ $alimento->gramas }}" required>
                 </div>
             </div>
 

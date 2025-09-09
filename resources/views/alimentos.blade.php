@@ -219,11 +219,11 @@
             <div class="row2">
                 <div class="item">
                     <label for="kcal"><span class="kcal">Calorias por (100g):</span></label>
-                    <input type="decimal" name="kcal" placeholder="Exemplo: 20 - 20 calorias a cada 100 gramas" required>
+                    <input type="number" step="0.001" name="kcal" placeholder="Exemplo: 20 - 20 calorias a cada 100 gramas" required>
                 </div>
                 <div class="item">
                     <label for="gramas"><span class="gramas">Quantidade (g):</span></label>
-                    <input type="decimal" name="gramas" placeholder="Quantas gramas foram consumidas do alimento" required>
+                    <input type="number" step="0.001" name="gramas" placeholder="Quantas gramas foram consumidas do alimento" required>
                 </div>
             </div>
 
