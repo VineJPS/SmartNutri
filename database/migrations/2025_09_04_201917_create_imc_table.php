@@ -11,7 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('resultados', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
+            $table->float('imc', 5, 2);
+            $table->integer('calorias');
+            $table->integer('agua'); // em ml
+
+            $table->timestamps();
+        });
     }
 
     /**
@@ -19,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('imc');
     }
 };

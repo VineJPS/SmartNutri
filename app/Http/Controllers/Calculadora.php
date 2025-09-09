@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Imc;
+
 
 class Calculadora extends Controller
 {
@@ -34,6 +37,13 @@ class Calculadora extends Controller
 
         $agua = $peso * 35; // em ml
 
+        $userId = Auth::id();
+        Imc::create([
+            'user_id' =>$userId,
+            'imc' => $imc,
+            'calorias' => $calorias,
+            'agua' => $agua
+        ]);
         return view('calc', compact('imc', 'classificacao', 'calorias', 'agua', 'peso', 'altura', 'idade', 'genero'));
     }
 }

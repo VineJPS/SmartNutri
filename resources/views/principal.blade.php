@@ -157,6 +157,8 @@
       text-align: center;
     }
 
+
+
         @media screen and (max-width: 750px){
       .perfil-1 button{
         padding: .5rem;

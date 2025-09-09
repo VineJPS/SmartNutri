@@ -155,6 +155,22 @@
         #iconLogout{
             font-size: 20px;
         }
+        .logout:hover{
+            transform: scale(1.1);
+        }
+        .logout{
+            color: red;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        .btn{
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        .btn:hover{
+            background: #4CAF50;
+            color: white;
+        }
         /*Responsivo*/
         /*header */
         @media screen and (max-width: 600px) {
@@ -165,7 +181,11 @@
         }
         .seta{
             color: white;
-            text-decoration: none
+            text-decoration: none;
+            transition: 0.4s;
+        }
+        #seta:hover{
+            transform: scale(1.1);
         }
 
         form{
@@ -201,7 +221,7 @@
 
                 <div class="infos">
                     <div class="campoInfor">
-                        <h2 class='tituloCampoInfor'>63KG</h2>
+                        <h2 class='tituloCampoInfor'>22.2</h2>
                         <h3 class='subtituloCampoInfor'>Peso</h3>
                     </div>
                     <div class="campoInfor">
@@ -249,9 +269,9 @@
 
             <form action="{{ route('logout') }}" method="get">
                 @csrf
-                <button type="submit">
+                <button type="submit" class="logout">
                     <i id="iconLogout" class="ph ph-sign-out"></i>
-                    <h3 class="logout">Sair da Conta</h3>
+                    <h3>Sair da Conta</h3>
                 </button>
             </form>
             

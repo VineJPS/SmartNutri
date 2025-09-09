@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Hash; // ✅ Importante!
+use Illuminate\Support\Facades\Auth;
+
 
 class Usuario extends Controller
 {
@@ -76,4 +78,5 @@ class Usuario extends Controller
         
         return redirect('/');
     }
+  
 }
