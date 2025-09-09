@@ -95,14 +95,6 @@
             color: #659bffff;
         }
 
-
-            @media screen and (min-height: 800px){
-                footer{
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                }
-            }
     </style>
 
     @yield('css')

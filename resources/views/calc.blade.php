@@ -103,6 +103,7 @@
         padding-bottom: 1rem; 
         color: #4CAF50;
         text-align: center;
+        padding-left: 25px;
     }
 
     .imc,.calorias,.agua{
