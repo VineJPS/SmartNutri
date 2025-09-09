@@ -56,7 +56,9 @@ class Usuario extends Controller
         $usuario = User::create([
             'name'     => $request->name,
             'email'    => $request->email,
-            'password' => Hash::make($request->senha), //hash é um ngc para criptografar a senha
+            'password' => Hash::make($request->senha), //hash é um ngc para criptografar a senha,
+            'genero'    => 'ser humano',
+            'dataNasc' => '2015-09-02'
         ]);
 
         // Loga automaticamente após o cadastro

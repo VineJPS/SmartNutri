@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Alimento;
 use Illuminate\Support\Facades\Auth;
 
+
 class Principal extends Controller
 {
     function principal(){

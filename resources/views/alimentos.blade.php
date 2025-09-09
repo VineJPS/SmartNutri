@@ -31,7 +31,7 @@
         width: 80vw;
         min-height: 900px;
         border-radius: 70px;
-        border: 1px solid dddbdbff;
+        border: 1px solid #dddbdbff;
     }
 
     /* .card-body, .card-footer, .card-header{
