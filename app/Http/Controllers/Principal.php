@@ -50,4 +50,8 @@ class Principal extends Controller
    function calc(){
     return View('calc'); 
    }
+
+   function meta(){
+    return View('meta');
+   }
 }

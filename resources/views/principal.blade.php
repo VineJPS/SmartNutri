@@ -285,23 +285,23 @@
         </div>
       </a>
 
-      <div class="card">
-        <div class="card-titulo">
-          <div class="icon">
-            <span class="material-symbols-outlined">
-              target
-            </span>
+      <a class="card" href="{{ route('meta') }}">
+          <div class="card-titulo">
+            <div class="icon">
+              <span class="material-symbols-outlined">
+                target
+              </span>
+            </div>
+            <div class="nome-card">
+              <h1>Meta de Calorias</h1>
+            </div>
           </div>
-          <div class="nome-card">
-            <h1>Meta de Calorias</h1>
+          <div class="corpo-card">
+            <p>
+              Altera sua meta de calorias.
+            </p>
           </div>
-        </div>
-        <div class="corpo-card">
-          <p>
-            Altera sua meta de calorias.
-          </p>
-        </div>
-      </div>
+      </a>
 
     </div>
   </main>

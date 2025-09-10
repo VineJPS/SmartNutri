@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Alimento;
+use App\Models\Meta;
 
 class Alimentos extends Controller
 {
@@ -11,8 +12,6 @@ class Alimentos extends Controller
 
         //campo para testar os dados que estão chegando
         // dd($request->all());
-        // dd(auth()->check(), auth()->user());
-        
 
         $request->validate([
             'data' => 'required|date',
@@ -48,7 +47,24 @@ class Alimentos extends Controller
             'user_id' => auth()->id(), // pega o id do usuário logado
         ]);
 
-        return redirect()->route('alimentos')->with('success','Alimento registrado com sucesso!');
+        $id = auth()->id();
+        $meta = Meta::findOut($id, null);
+
+        if ($meta){
+            Meta::calcularProgresso();
+            return redirect()->route('alimentos')->with('success','Alimento registrado com sucesso!');
+        } else {
+            $data = today()->subDay()->format('Y-m-d');
+            $meta = Meta::findOut($id, $data);
+            if ($meta){
+                $metaValor = $meta->meta;
+                Meta::definirMeta($id, $metaValor);
+                Meta::calcularProgresso();
+                return redirect()->route('index')->with('success','Alimento registrado com sucesso!');
+            } else {
+                return redirect()->route('alimentos')->with('success','Alimento registrado com sucesso!');
+            }
+        }
     }
 
     function filtrar(Request $request){

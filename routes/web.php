@@ -32,26 +32,31 @@ Route::middleware(['guest'])->group(function () {
 
 // ---------------- Rotas protegidas - somente para usuários LOGADOS
 Route::middleware(['auth'])->group(function () {
-//  Alimentos
+// Perfil
+    Route::get('/perfil', [App\Http\Controllers\Principal::class, 'perfilView'])->name('perfil')->middleware('auth');
+    Route::get('/logout', [App\Http\Controllers\Usuario::class, 'logout'])->name('logout');
+    
+// Imc calculadora
+    Route::get('/calculadora', [App\Http\Controllers\Principal::class, 'calc'])->name('calc');
+    Route::post('/calculadora', [App\Http\Controllers\Calculadora::class, 'calcular'])->name('calc.calcular')->middleware('auth');
+    // Route::post('/calculadora', [App\Http\Controllers\Usuario::class, 'calcular'])->name('calc.calcular');
+
+// Alimentos
     Route::get('/alimentos', [App\Http\Controllers\Principal::class, 'alimentos'])->name('alimentos');
     Route::post('/alimentos', [App\Http\Controllers\Alimentos::class, 'registrar'])->name('alimentos.registrar');
     
-    // Historico de alimentos
+// Historico de alimentos
     Route::get('/historico', [App\Http\Controllers\Principal::class, 'historico'])->name('historico');
     Route::get('/historico/filter', [App\Http\Controllers\Alimentos::class, 'filtrar'])->name('historico.filter');
     Route::delete('/historico/{id}', [App\Http\Controllers\Alimentos::class, 'remover'])->name('historico.delete');
     
-    // Modal de edição de alimentos
+// Modal de edição de alimentos
     Route::get('/alimentos/{id}/editar', [App\Http\Controllers\Alimentos::class, 'editarModal'])->name('alimentos.editar');
     Route::put('/alimentos/{id}', [App\Http\Controllers\Alimentos::class, 'update'])->name('alimentos.update');
     // Route::get('/modal', [App\Http\Controllers\Principal::class, 'modal'])->name('modal');
 
-//  perfil
-    Route::get('/perfil', [App\Http\Controllers\Principal::class, 'perfilView'])->name('perfil')->middleware('auth');
-    Route::get('/logout', [App\Http\Controllers\Usuario::class, 'logout'])->name('logout');
-
-//  imc calculadora
-    Route::get('/calculadora', [App\Http\Controllers\Principal::class, 'calc'])->name('calc');
-    Route::post('/calculadora', [App\Http\Controllers\Calculadora::class, 'calcular'])->name('calc.calcular')->middleware('auth');
-    // Route::post('/calculadora', [App\Http\Controllers\Usuario::class, 'calcular'])->name('calc.calcular');
+// Meta
+    Route::get('/meta', [App\Http\Controllers\Principal::class, 'meta'])->name('meta');
+    Route::post('/meta/define', [App\Http\Controllers\Metas::class, 'definirMeta'])->name('meta.definir');
+    Route::post('/meta/remove', [App\Http\Controllers\Metas::class, 'removerMeta'])->name('meta.remove');
 });

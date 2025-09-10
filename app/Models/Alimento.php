@@ -31,6 +31,8 @@ class Alimento extends Model
         'data_formatada',
     ];
 
+    
+
     public function getHoraFormatadaAttribute()
     {
         return Carbon::parse($this->hora)->format('H:i');
