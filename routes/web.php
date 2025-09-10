@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [App\Http\Controllers\Usuario::class, 'logout'])->name('logout');
     
 // Imc calculadora
-    Route::get('/calculadora', [App\Http\Controllers\Principal::class, 'calc'])->name('calc');
+    Route::get('/calculadora', [App\Http\Controllers\Calculadora::class, 'exibir'])->name('calc.exibir');
     Route::post('/calculadora', [App\Http\Controllers\Calculadora::class, 'calcular'])->name('calc.calcular')->middleware('auth');
     // Route::post('/calculadora', [App\Http\Controllers\Usuario::class, 'calcular'])->name('calc.calcular');
 

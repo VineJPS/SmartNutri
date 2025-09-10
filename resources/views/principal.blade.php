@@ -267,7 +267,7 @@
         </div>
       </a>
       
-      <a class="card" href="{{ route('calc') }}">
+      <a class="card" href="{{ route('calc.exibir') }}">
         <div class="card-titulo">
           <div class="icon">
             <span class="material-symbols-outlined">

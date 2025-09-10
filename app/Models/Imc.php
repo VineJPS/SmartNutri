@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Imc extends Model
 {
     protected $table = 'resultados';
-    protected $fillable = ['user_id', 'imc', 'calorias', 'agua'];
+    protected $fillable = ['user_id', 'imc', 'calorias', 'agua', 'altura', 'peso'];
 }

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->float('imc', 5, 2);
             $table->integer('calorias');
             $table->integer('agua'); // em ml
+            $table->integer('peso'); // em ml
+            $table->float('altura', 5, 2); // em ml
             $table->foreignId('user_id')
             ->references('id')
             ->on('users')

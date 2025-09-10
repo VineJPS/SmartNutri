@@ -22,11 +22,25 @@ class Usuario extends Controller
         ]);
 
         // Usando auth 
-        if (Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password
-        ], $request->remember)) {
+        if (
+            Auth::attempt([
+                'email' => $request->email,
+                'password' => $request->password
+            ], $request->remember)
+        ) {
             $request->session()->regenerate();
+
+            // pega o usuário logado
+            $usuario = Auth::user();
+
+            // cria um array na sessão
+            $request->session()->put('usuario', [
+                'id' => $usuario->id,
+                'name' => $usuario->name,
+                'email' => $usuario->email,
+                'genero' => $usuario->genero,
+                'dataNasc' => $usuario->dataNasc,
+            ]);
             return redirect()->intended('/');
         }
 
@@ -38,28 +52,28 @@ class Usuario extends Controller
     public function criarUsuario(Request $request)
     {
         $request->validate([
-            'name'      => 'required|string|max:255',
-            'email'     => 'required|email|unique:users,email',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
             'confEmail' => 'required|same:email',
-            'senha'     => 'required|min:6',
+            'senha' => 'required|min:6',
             'confSenha' => 'required|same:senha',
         ], [
-            'name.required'      => 'O campo nome é obrigatório',
-            'email.required'     => 'O campo e-mail é obrigatório',
-            'email.email'        => 'E-mail inválido',
-            'email.unique'       => 'Já existe um usuário com esse e-mail',
-            'confEmail.same'     => 'Os e-mails não coincidem',
-            'senha.required'     => 'O campo senha é obrigatório',
-            'senha.min'          => 'A senha deve ter no mínimo 6 caracteres',
-            'confSenha.same'     => 'As senhas não coincidem',
+            'name.required' => 'O campo nome é obrigatório',
+            'email.required' => 'O campo e-mail é obrigatório',
+            'email.email' => 'E-mail inválido',
+            'email.unique' => 'Já existe um usuário com esse e-mail',
+            'confEmail.same' => 'Os e-mails não coincidem',
+            'senha.required' => 'O campo senha é obrigatório',
+            'senha.min' => 'A senha deve ter no mínimo 6 caracteres',
+            'confSenha.same' => 'As senhas não coincidem',
         ]);
 
         // Criando usuario no bd
         $usuario = User::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
+            'name' => $request->name,
+            'email' => $request->email,
             'password' => Hash::make($request->senha), //hash é um ngc para criptografar a senha,
-            'genero'    => 'ser humano',
+            'genero' => 'ser humano',
             'dataNasc' => '2015-09-02'
         ]);
 
@@ -75,8 +89,8 @@ class Usuario extends Controller
         Auth::logout();
         $request->session()->invalidate();      // Invalida a sessão
         $request->session()->regenerateToken();       // Regenera o token CSRF (configuração de segurança)
-        
+
         return redirect('/');
     }
-  
+
 }
