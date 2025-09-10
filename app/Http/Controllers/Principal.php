@@ -28,6 +28,9 @@ class Principal extends Controller
    function loginPag(){
     return View('login');
    }
+   function meta(){
+    return View('meta');
+   }
 
    function cadastroPag(){
     return View('cadastro');

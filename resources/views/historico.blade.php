@@ -544,6 +544,78 @@
         justify-content: center;
         align-items: center;
     } */
+
+     @media screen and (max-width:850px){
+        .principal .card-header .item {
+            justify-content: center;
+            align-items: center;
+        }
+        .principal .card-header h2 {
+            font-size: 1.7em;
+            text-align: center
+        }
+        .principal .card-header p {
+            font-size: 1.3em;
+            text-align: justify;
+        }
+        .principal .row1{
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .principal .row1 .item input {
+            width: 275px;
+        }
+        .principal .row1 button {
+            padding: 0.5rem;
+        }
+        .principal .table-header{
+            padding: 1rem;
+            overflow-x: auto;
+            width: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #4CAF50 #f4f4f4;
+            scrollbar-gutter: stable;
+            scroll-behavior: smooth;
+        }
+        .principal .row,.principal .table-header{
+            gap: 1rem;
+        }
+        .principal .table-header h3{
+            font-size: 18px;
+        }
+        .principal .row,.principal .table-cell-acoes {
+            padding-left: 1rem;
+        }
+
+        .modal .row1,.modal .row2{
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        .modal .card-header h2 {
+            font-size: 1.5em;
+        }
+        .modal .card-header p {
+            font-size: 1.2em;
+        }
+
+        .modal .card-body label{
+            font-size: 1.2em;
+        }
+        .modal .button{
+            padding: 0 4rem;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            width: 100%;
+            align-items: center;
+        }
+        .modal .button .concluir{
+            width: 75%;
+        }
+        .modal .discard{
+            width: 25%;
+        }
+     }
 </style>
 
 @endsection

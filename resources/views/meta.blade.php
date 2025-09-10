@@ -1,0 +1,137 @@
+@extends('app')
+
+@section('title', 'Meta')
+
+@section('css')
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    a{
+      text-decoration: none;
+      color: white;
+    }
+    body{
+      background: #33333305;
+    }
+
+    main{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .card{
+        background: #FFFFFF;
+        border: 1px solid #dddbdbff;
+        width: 85%;
+        margin-top: 2rem;
+        padding: 2rem;
+        border-radius: 10px;
+        color: black;
+        transition: 0.4s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .card-header,.card-body,.card-button{
+        width: 100%;
+    }
+    .card-header h1{
+        color: #4CAF50;
+        padding: 1rem 0.4rem;
+    }
+    hr{
+        border-color: #4CAF50;
+        margin-bottom: 1rem;
+    }
+    .asterisco{
+        color: red;
+        margin-left: -.5rem;
+    }
+
+    .card-body{
+        padding: 2rem 0;
+    }
+
+    input[type="text"]{
+        width: 100%;
+        height: 50px;
+        border: 1px solid #00000030;
+        margin: 1rem 0;
+        text-align: center;
+        font-size: 24px;
+        border-radius: 10px;
+    }
+
+    .card-button{
+        display: flex;
+        justify-content: space-between;
+    }
+    .card-button button{
+        width: 48%;
+        padding: 1rem;
+        cursor: pointer;
+        border-radius: 10px;
+        font-size: 25px;
+        transition: 0.4s;
+    }
+
+    .save{
+        background: #4CAF50;
+        color: white;
+        border: 1px solid #00000040;
+    }
+
+    .cancel{
+        color: #F44336;
+        border: 1px solid #F44336;
+        background: transparent;
+    }
+
+    .save:hover{
+        color: #4CAF50;
+        background: white;
+    }
+
+    .cancel:hover{
+        color: white;
+        background: #F44336;
+    }
+
+    @media screen and (max-width: 525px){
+        .card-button{
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .card-button button{
+            width: 100%;
+        }
+        .card-header h1{
+            font-size: 24px;
+        }
+    }
+  </style>
+@endsection
+
+@section('content')
+    <form class="card">
+        <div class="card-header">
+            <h1>Definir Meta de Calorias</h1>
+            <hr/>
+        </div>
+        <div class="card-body">
+            <div class="title"><span class="asterisco">*</span> Nova Meta Diária (kcal):</div>
+            <input type="text" name="meta" id="meta" value="2000">
+        </div>
+        <div class="card-button">
+            <button class="save" type="submit">Salvar Meta</button>
+            <button class="cancel" type="submit">Cancelar</button>
+        </div>
+</form>
+@endsection

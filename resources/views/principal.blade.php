@@ -208,7 +208,7 @@
     <div class="cards">
 
       <div class="card caloria" style="width: 95%; height: auto; cursor: default;">
-        <div class="card-titulo">
+        <div class="card-titulo" style="width: 100%;">
           <div class="icon">
             <span class="material-symbols-outlined">
               target
@@ -285,7 +285,7 @@
         </div>
       </a>
 
-      <div class="card">
+      <a href="{{ route('meta') }}" class="card">
         <div class="card-titulo">
           <div class="icon">
             <span class="material-symbols-outlined">
@@ -301,7 +301,7 @@
             Altera sua meta de calorias.
           </p>
         </div>
-      </div>
+      </a>
 
     </div>
   </main>
