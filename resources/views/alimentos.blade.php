@@ -56,7 +56,7 @@
     }
 
     .card-header h2{
-        font-size: 2.6em;
+        font-size: 2em;
         color: #4CAF50;
     }
 
@@ -178,6 +178,36 @@
         cursor: pointer;
     }
 
+    @media screen and (max-width: 700px){
+        .card{
+            width: 95%;
+        }
+        .card-body label,.card-header p{
+            font-size: 1.2em;
+        }
+        .card-header .item{
+            justify-content: center;
+            align-items: center;
+        }
+        .card-header h2{
+            font-size: 1.5em;
+        }
+        .button{
+            width: 80%;
+        }
+        .row1, .row2{
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        .alimento{
+            width: 100%;
+        }
+        .button button{
+            font-size: 20px;
+        }
+    }
+
 
 </style>
 
@@ -227,9 +257,11 @@
                 </div>
             </div>
 
-            <div class="item">
-                <label for="nome"><span class="nome">Alimentos:</span></label>
-                <input type="text" name="nome" placeholder="Nome do alimento" required>
+            <div class="row1">
+                <div class="item alimento">
+                    <label for="nome"><span class="nome">Alimentos:</span></label>
+                    <input type="text" name="nome" placeholder="Nome do alimento" required>
+                </div>
             </div>
 
         </div>

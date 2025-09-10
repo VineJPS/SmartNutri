@@ -129,9 +129,19 @@
     -moz-appearance: textfield;
     }
 
-    @media screen and (max-width: 681px) {
+    @media screen and (max-width: 870px) {
         .body{
             width: 100%;
+        }
+        .resul{
+            flex-direction: column;
+            gap: 2rem;
+        }
+        h3,h4{
+            font-size: 14px;
+        }
+        .header h1{
+            font-size: 20px;
         }
     }
   </style>

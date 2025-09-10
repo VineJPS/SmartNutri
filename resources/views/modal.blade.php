@@ -47,10 +47,12 @@
                 </div>
             </div>
 
+        <div class="row1">
             <div class="item">
                 <label for="nome"><span class="nome">Alimentos:</span></label>
                 <input type="text" name="nome" value="{{ $alimento->nome }}" required>
             </div>
+        </div>
 
         </div>
         
