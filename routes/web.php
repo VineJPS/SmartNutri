@@ -35,10 +35,13 @@ Route::middleware(['auth'])->group(function () {
 // Perfil
     Route::get('/perfil', [App\Http\Controllers\Principal::class, 'perfilView'])->name('perfil')->middleware('auth');
     Route::get('/logout', [App\Http\Controllers\Usuario::class, 'logout'])->name('logout');
+
+    Route::get('/editarDados', [App\Http\Controllers\Principal::class, 'editarDados'])->name('editarDados')->middleware('auth');
+    Route::post('/editarDados', [App\Http\Controllers\Usuario::class, 'editarDados'])->name('editarDados');
     
 // Imc calculadora
     Route::get('/calculadora', [App\Http\Controllers\Calculadora::class, 'exibir'])->name('calc.exibir');
-    Route::post('/calculadora', [App\Http\Controllers\Calculadora::class, 'calcular'])->name('calc.calcular')->middleware('auth');
+    Route::post('/calculadora', [App\Http\Controllers\Calculadora::class, 'calcular'])->name('calc.calcular');
     // Route::post('/calculadora', [App\Http\Controllers\Usuario::class, 'calcular'])->name('calc.calcular');
 
 // Alimentos

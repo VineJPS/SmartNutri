@@ -98,6 +98,7 @@ $historico = $historico ? $historico : (object) [
 
         /*Main*/
         main {
+            margin-top: 50px;
             background: #E6DCDC;
             padding: 5em;
             width: 100%;
@@ -109,7 +110,7 @@ $historico = $historico ? $historico : (object) [
 
         .card {
             width: 700px;
-            height: 400px;
+            height: 450px;
             background: #fff;
             border-radius: 20px;
             padding: 1em;
@@ -135,80 +136,54 @@ $historico = $historico ? $historico : (object) [
             font-size: 20px;
         }
 
-        .card-linha {
-            display: flex;
-            justify-content: space-between;
-            height: 50px;
+        .card-dados {
+            padding: 1em;
         }
 
-        .card-linha1 {
-            color: #757575;
-        }
-
-        .btn-area {
+        .row {
             width: 100%;
+            height: 50px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
         }
 
-        .btn {
-            width: 250px;
-            height: 50px;
-            background: #fff;
-            border: 2px solid #4CAF50;
-            color: #4CAF50;
-            margin-top: 25px;
-        }
-
-        /*Footer*/
-        footer {
-            color: red;
+        .row-butao {
+            margin-top: 30px;
             display: flex;
-            width: 100%;
-            height: 100px;
-            justify-content: center;
-            align-items: center;
-            gap: 1em;
-            padding: 3em;
+            justify-content: space-between;
         }
 
-        #iconLogout {
-            font-size: 20px;
-        }
-
-        .logout:hover {
-            transform: scale(1.1);
-        }
-
-        .logout {
-            color: red;
-            cursor: pointer;
-            transition: 0.4s;
-        }
-
-        .btn {
-            cursor: pointer;
-            transition: 0.4s;
-        }
-
-        .btn:hover {
+        .butao1 {
+            width: 200px;
+            height: 35px;
+            border-radius: 5px;
             background: #4CAF50;
-            color: white;
+            color: #fff;
+            cursor: pointer;
         }
 
-        .butao {
-            width: 250px;
-            height: 50px;
-            background: #fff;
-            border: 2px solid #4CAF50;
-            color: #4CAF50;
-            margin-top: 25px;
+         .butaovermeio{
+            text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
+            width: 200px;
+            height: 35px;
+            border-radius: 5px;
+            background: #E6DCDC;
+            color: red;
+            border: 1px solid red;
+        }
+        #genero{
+            padding: 10px;
+        }
+        .input-card {
+            line-height: 30px;
+            padding: 2px;
+            border: 1px solid color: #d9d9d9;
+            border-radius: 5px;
         }
 
         /*Responsivo*/
@@ -228,19 +203,6 @@ $historico = $historico ? $historico : (object) [
 
         #seta:hover {
             transform: scale(1.1);
-        }
-
-        form {
-            display: flex;
-        }
-
-        form button {
-            border: none;
-            background: transparent;
-            display: flex;
-            flex-direction: row;
-            column-gap: .7em;
-            align-items: center;
         }
     </style>
 </head>
@@ -282,42 +244,37 @@ $historico = $historico ? $historico : (object) [
                     <i class="ph ph-user-circle" id="usericon"></i>
                     <p class="titulo-card"> Informações Pessoais</p>
                 </div>
-                <div class="card-dados">
-                    <div class="card-linha">
-                        <p class="card-linha1">Nome Completo</p>
-                        <p class="card-linha2">{{ $usuario->name }}</p>
+                <form class="card-dados" method="POST" action="{{route('editarDados')}}">
+                    @csrf
+                    <div class="row">
+                        <p class="titulo-card-dados">Nome Completo</p>
+                        <input type="text" id="name" name="name" placeholder="insira seu nome completo" class="input-card">
                     </div>
-                    <div class="card-linha">
-                        <p class="card-linha1">E-mail</p>
-                        <p class="card-linha2">{{ $usuario->email }}</p>
+                    <div class="row">
+                        <p class="titulo-card-dados">E-mail</p>
+                        <input type="text" id="email" name="email" placeholder="" class="input-card">
                     </div>
-                    <div class="card-linha">
-                        <p class="card-linha1">Data de Nascimento</p>
-                        <p class="card-linha2">{{ $usuario->dataNasc }}</p>
+                    <div class="row">
+                        <p class="titulo-card-dados">Data de Nascimento</p>
+                        <input type="date" id="dataNasc" name="dataNasc" placeholder="data" class="input-card">
                     </div>
-                    <div class="card-linha">
-                        <p class="card-linha1">Genêro</p>
-                        <p class="card-linha2">{{ $usuario->genero }}</p>
+                    <div class="row">
+                        <p class="titulo-card-dados">Genero</p>
+                        <select name="genero" id="genero">
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                        </select>
                     </div>
 
-                    <div class="btn-area">
-                        <a class="butao" href="{{ route('editarDados') }}">Editar Informações</a>
+                    <div class="row-butao">
+                        <input type="submit" id="butao" class="butao1" value="enviar">
+                        <a href="{{ route('perfil') }}" class="butaovermeio">Cancelar</a>
 
                     </div>
-                </div>
+                </form>
+
             </div>
         </main>
-        <footer>
-
-            <form action="{{ route('logout') }}" method="get">
-                @csrf
-                <button type="submit" class="logout">
-                    <i id="iconLogout" class="ph ph-sign-out"></i>
-                    <h3>Sair da Conta</h3>
-                </button>
-            </form>
-
-        </footer>
     </div>
 </body>
 

@@ -10,9 +10,10 @@ use App\Models\Meta;
 
 class Principal extends Controller
 {
-    function principal(){
+    function principal()
+    {
 
-        if(auth()->check()){
+        if (auth()->check()) {
             $progresso = Meta::calcularProgresso();
             return view('principal', $progresso);
         } else {
@@ -20,38 +21,51 @@ class Principal extends Controller
         }
     }
 
-   function perfilView(){
+    function perfilView()
+    {
         $usuario = Auth::user();
         return view('perfil', compact('usuario'));
-   }
+    }
+    function editarDados()
+    {
+        $usuario = Auth::user();
+        return view('editardados', compact('usuario'));
+    }
 
-   function loginPag(){
-    return View('login');
-   }
+    function loginPag()
+    {
+        return View('login');
+    }
 
-   function cadastroPag(){
-    return View('cadastro');
-   }
+    function cadastroPag()
+    {
+        return View('cadastro');
+    }
 
-   function alimentos(){
-    return View('alimentos');
-   }
- 
-   function historico(){
+    function alimentos()
+    {
+        return View('alimentos');
+    }
+
+    function historico()
+    {
         $alimentos = Alimento::doUsuario()->get();
         session()->flash('ultima_acao', 'limpar');
         return view('historico', compact('alimentos'));
-   }
-
-    function modal(){
-     return View('modal');
     }
 
-   function calc(){
-    return View('calc'); 
-   }
+    function modal()
+    {
+        return View('modal');
+    }
 
-   function meta(){
-    return View('meta');
-   }
+    function calc()
+    {
+        return View('calc');
+    }
+
+    function meta()
+    {
+        return View('meta');
+    }
 }

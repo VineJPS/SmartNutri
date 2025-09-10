@@ -83,6 +83,28 @@ class Usuario extends Controller
         return redirect('/');
     }
 
+    public function editarDados(Request $request)
+    {
+        $usuario = Auth::user(); // pega o usuário logado
+
+        // validação 
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $usuario->id,
+            'genero' => 'required|string',
+            'dataNasc' => 'required|date'
+        ]);
+
+        // atualiza 
+        $usuario->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'genero' => $request->genero,
+            'dataNasc' => $request->dataNasc
+        ]);
+
+        return redirect()->back()->with('sucesso', 'Perfil atualizado com sucesso!');
+    }
     public function logout(Request $request)
     {
         // Desloga o usuario
