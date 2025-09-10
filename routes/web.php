@@ -15,7 +15,6 @@ use App\Http\Middleware\LogAcessoMiddleware;
 
     // Home
     Route::get('/', [App\Http\Controllers\Principal::class, 'principal'])->name('index');
-    Route::get('/meta', [App\Http\Controllers\Principal::class, 'meta'])->name('meta');
 
 // ---------------- Rotas para visitantes - somente para usuários NÃO LOGADOS
 Route::middleware(['guest'])->group(function () {
