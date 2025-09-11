@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-use App\Models\Imc;
-$historico = Imc::where('user_id', Auth::id())->latest()->first();
-$historico = $historico ? $historico : (object) [
-    'imc' => 0,
-    'calorias' => 0,
-    'agua' => 0,
-    'peso' => 0,
-    'altura' => 0
-];
 
-?>
 
 <head>
     <meta charset="UTF-8">

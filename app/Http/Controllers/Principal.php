@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Alimento;
 use App\Models\Meta;
+use App\Models\Imc;
 
 
 class Principal extends Controller
@@ -24,12 +25,14 @@ class Principal extends Controller
     function perfilView()
     {
         $usuario = Auth::user();
-        return view('perfil', compact('usuario'));
+        $historico = Imc::buscar(Auth::user()->id);
+        return view('perfil', compact('usuario'), compact('historico'));
     }
     function editarDados()
     {
         $usuario = Auth::user();
-        return view('editardados', compact('usuario'));
+        $historico = Imc::buscar(Auth::user()->id);
+        return view('editardados', compact('usuario'), compact('historico'));
     }
 
     function loginPag()

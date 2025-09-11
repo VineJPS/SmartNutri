@@ -1,18 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-use App\Models\Imc;
-$historico = Imc::where('user_id', Auth::id())->latest()->first();
-$historico = $historico ? $historico : (object) [
-    'imc' => 0,
-    'calorias' => 0,
-    'agua' => 0,
-    'peso' => 0,
-    'altura' => 0
-];
-
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -224,15 +211,15 @@ $historico = $historico ? $historico : (object) [
 
                 <div class="infos">
                     <div class="campoInfor">
-                        <h2 class='tituloCampoInfor'>{{ $historico->peso ?? 0 }}</h2>
+                        <h2 class='tituloCampoInfor'>{{ $historico->peso}}</h2>
                         <h3 class='subtituloCampoInfor'>Peso</h3>
                     </div>
                     <div class="campoInfor">
-                        <h2 class='tituloCampoInfor'>{{ $historico->altura ?? 0 }}</h2>
+                        <h2 class='tituloCampoInfor'>{{ $historico->altura}}</h2>
                         <h3 class='subtituloCampoInfor'>Altura</h3>
                     </div>
                     <div class="campoInfor">
-                        <h2 class='tituloCampoInfor'>{{ $historico->imc ?? 0 }}</h2>
+                        <h2 class='tituloCampoInfor'>{{ $historico->imc}}</h2>
                         <h3 class='subtituloCampoInfor'>IMC</h2>
                     </div>
                 </div>
