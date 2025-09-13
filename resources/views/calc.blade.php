@@ -37,7 +37,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 5rem;
+            padding: 1rem 2rem;
         }
 
         .calc {

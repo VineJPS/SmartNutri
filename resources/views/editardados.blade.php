@@ -88,6 +88,7 @@
             margin-top: 50px;
             background: #E6DCDC;
             padding: 5em;
+            margin-bottom: 3rem;
             width: 100%;
             height: 450px;
             display: flex;
@@ -139,6 +140,7 @@
         .row-butao {
             margin-top: 30px;
             display: flex;
+            gap: 1rem;
             justify-content: space-between;
         }
 
@@ -168,7 +170,7 @@
         }
         .input-card {
             line-height: 30px;
-            padding: 2px;
+            padding: 0.3rem;
             border: 1px solid color: #d9d9d9;
             border-radius: 5px;
         }
@@ -190,6 +192,15 @@
 
         #seta:hover {
             transform: scale(1.1);
+        }
+
+        @media screen and (max-width:700px ){
+            .card{
+                width: 90%;
+            }
+            main{
+                padding: 0;
+            }
         }
     </style>
 </head>

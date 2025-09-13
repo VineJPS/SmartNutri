@@ -336,8 +336,8 @@
         background-color: white;
         width: 80vw;
         min-height: 900px;
-        border-radius: 70px;
-        border: 1px solid dddbdbff;
+        border-radius: 20px;
+        border: 1px solid #dddbdbff;
     }
 
     /* .card-body, .card-footer, .card-header{
@@ -603,17 +603,19 @@
             font-size: 1.2em;
         }
         .modal .button{
-            padding: 0 4rem;
+            padding: 0 1rem;
             gap: 0.5rem;
             margin-top: 2rem;
             width: 100%;
             align-items: center;
+            flex-direction: column;
         }
         .modal .button .concluir{
-            width: 75%;
+            width: 100%;
+            padding: 0.6rem;
         }
         .modal .discard{
-            width: 25%;
+            width: 100%;
         }
      }
 </style>
