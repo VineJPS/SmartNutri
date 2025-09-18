@@ -14,11 +14,11 @@ class Usuario extends Controller
     function autenticarLogin(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+            'email' => '|email',
+            'password' => '',
         ], [
             'email.email' => 'O campo usuário (e-mail) é obrigatório!',
-            'password.required' => 'O campo password é obrigatório!'
+            'password.' => 'O campo password é obrigatório!'
         ]);
 
         // Usando auth 
@@ -52,18 +52,18 @@ class Usuario extends Controller
     public function criarUsuario(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'confEmail' => 'required|same:email',
-            'senha' => 'required|min:6',
-            'confSenha' => 'required|same:senha',
+            'name' => '|string|max:255',
+            'email' => '|email|unique:users,email',
+            'confEmail' => '|same:email',
+            'senha' => '|min:6',
+            'confSenha' => '|same:senha',
         ], [
-            'name.required' => 'O campo nome é obrigatório',
-            'email.required' => 'O campo e-mail é obrigatório',
+            'name.' => 'O campo nome é obrigatório',
+            'email.' => 'O campo e-mail é obrigatório',
             'email.email' => 'E-mail inválido',
             'email.unique' => 'Já existe um usuário com esse e-mail',
             'confEmail.same' => 'Os e-mails não coincidem',
-            'senha.required' => 'O campo senha é obrigatório',
+            'senha.' => 'O campo senha é obrigatório',
             'senha.min' => 'A senha deve ter no mínimo 6 caracteres',
             'confSenha.same' => 'As senhas não coincidem',
         ]);
@@ -83,28 +83,44 @@ class Usuario extends Controller
         return redirect('/');
     }
 
-    public function editarDados(Request $request)
-    {
-        $usuario = Auth::user(); // pega o usuário logado
+   public function editarDados(Request $request)
+{
+    $usuario = Auth::user(); // pega o usuário logado
 
-        // validação 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $usuario->id,
-            'genero' => 'required|string',
-            'dataNasc' => 'required|date'
-        ]);
+    
+    $request->validate([
+        'name' => 'nullable|string|max:255',
+        'email' => 'nullable|email|unique:users,email,' . $usuario->id,
+        'genero' => 'nullable|string',
+        'dataNasc' => 'nullable|date'
+    ]);
+    
 
-        // atualiza 
-        $usuario->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'genero' => $request->genero,
-            'dataNasc' => $request->dataNasc
-        ]);
+    $dadosAtualizados = [];
 
-        return redirect()->back()->with('sucesso', 'Perfil atualizado com sucesso!');
+    if ($request->has('name') && $request->name !== null && $request->name != $usuario->name) {
+        $dadosAtualizados['name'] = $request->name;
     }
+    
+    if ($request->has('email') && $request->email !== null && $request->email != $usuario->email) {
+        $dadosAtualizados['email'] = $request->email;
+    }
+    
+    if ($request->has('genero') && $request->genero !== null && $request->genero != $usuario->genero) {
+        $dadosAtualizados['genero'] = $request->genero;
+    }
+    
+    if ($request->has('dataNasc') && $request->dataNasc !== null && $request->dataNasc != $usuario->dataNasc) {
+        $dadosAtualizados['dataNasc'] = $request->dataNasc;
+    }
+    
+    if (!empty($dadosAtualizados)) {
+        $usuario->update($dadosAtualizados);
+    }
+    
+    return redirect()->back()->with('sucesso', 'Perfil atualizado com sucesso!');
+}
+
     public function logout(Request $request)
     {
         // Desloga o usuario
