@@ -246,21 +246,21 @@
                         src="https://marketplace.canva.com/FaoS8/MAErepFaoS8/1/tl/canva-person-icon-MAErepFaoS8.png"
                         alt="">
                 </div>
-                <h2>{{ $usuario->name }}</h2>
-                <h3>{{ $usuario->email }}</h3>
+                <h2>{{ isset($usuario->name) ? $usuario->name : '' }}</h2>
+                <h3>{{ isset($usuario->email) ? $usuario->email : '' }}</h3>
 
                 <div class="infos">
                     <div class="campoInfor">
-                        <h2 class='tituloCampoInfor'>{{ $historico->peso ?? 0 }}</h2>
+                        <h2 class='tituloCampoInfor'>{{ isset($historico->peso) ? $historico->peso : 0 }}</h2>
                         <h3 class='subtituloCampoInfor'>Peso</h3>
                     </div>
                     <div class="campoInfor">
-                        <h2 class='tituloCampoInfor'>{{ $historico->altura ?? 0 }}</h2>
+                        <h2 class='tituloCampoInfor'>{{ isset($historico->altura) ? $historico->altura : 0 }}</h2>
                         <h3 class='subtituloCampoInfor'>Altura</h3>
                     </div>
                     <div class="campoInfor">
-                        <h2 class='tituloCampoInfor'>{{ $historico->imc ?? 0 }}</h2>
-                        <h3 class='subtituloCampoInfor'>IMC</h2>
+                        <h2 class='tituloCampoInfor'>{{ isset($historico->imc) ? $historico->imc : 0 }}</h2>
+                        <h3 class='subtituloCampoInfor'>IMC</h3>
                     </div>
                 </div>
             </div>
@@ -274,19 +274,19 @@
                 <div class="card-dados">
                     <div class="card-linha">
                         <p class="card-linha1">Nome Completo</p>
-                        <p class="card-linha2">{{ $usuario->name }}</p>
+                        <p class="card-linha2">{{ isset($usuario->name) ? $usuario->name : '' }}</p>
                     </div>
                     <div class="card-linha">
                         <p class="card-linha1">E-mail</p>
-                        <p class="card-linha2">{{ $usuario->email }}</p>
+                        <p class="card-linha2">{{ isset($usuario->email) ? $usuario->email : '' }}</p>
                     </div>
                     <div class="card-linha">
                         <p class="card-linha1">Data de Nascimento</p>
-                        <p class="card-linha2">{{ $usuario->dataNasc }}</p>
+                        <p class="card-linha2">{{ isset($usuario->dataNasc) ? $usuario->dataNasc : '' }}</p>
                     </div>
                     <div class="card-linha">
                         <p class="card-linha1">Genêro</p>
-                        <p class="card-linha2">{{ $usuario->genero }}</p>
+                        <p class="card-linha2">{{ isset($usuario->genero) ? $usuario->genero : '' }}</p>
                     </div>
 
                     <div class="btn-area">
