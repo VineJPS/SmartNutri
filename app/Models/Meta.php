@@ -11,7 +11,7 @@ class Meta extends Model
 {
     use HasFactory;
 
-    protected $table = "meta";
+    protected $table = "metas";
     protected $fillable = ['user_id', 'data', 'meta', 'status'];
 
     protected $casts = [
@@ -57,7 +57,10 @@ class Meta extends Model
         $meta = self::findOut($userId, $data);
 
         if($meta) {
-            $meta->delete();
+            $metaValor = 0;
+            $meta->update([
+                'meta'=> $metaValor,
+            ]);
             return redirect()->back()->with('success','Meta removida com sucesso!');
         } else {   
             return redirect()->route('meta')->with('Error','A meta não existe!');
@@ -72,19 +75,28 @@ class Meta extends Model
 
         if($metaEnt) {
             $meta = $metaEnt->meta;
+            if ($meta == 0){
+                $consumidos = 0;
+                $porcentagem = 0;
+                $restantes = 0;
+                $meta = 0;
 
-            $consumidos = Alimento::where('user_id', $user->id)
-                                ->whereDate('data', today())
-                                ->sum('kcal');
-            
-            $porcentagem = min(100, max(0, ($consumidos / $meta) * 100));
-            $restantes = max(0, $meta - $consumidos);
-
-            if ($restantes <= 0) {
-                $metaEnt->update(['status'=> 1]);
                 return compact('meta', 'consumidos', 'porcentagem', 'restantes');
-            } else {
-                return compact('meta', 'consumidos', 'porcentagem', 'restantes');
+            } else{
+    
+                $consumidos = Alimento::where('user_id', $user->id)
+                                    ->whereDate('data', today())
+                                    ->sum('kcal');
+                
+                $porcentagem = min(100, max(0, ($consumidos / $meta) * 100));
+                $restantes = max(0, $meta - $consumidos);
+    
+                if ($restantes <= 0) {
+                    $metaEnt->update(['status'=> 1]);
+                    return compact('meta', 'consumidos', 'porcentagem', 'restantes');
+                } else {
+                    return compact('meta', 'consumidos', 'porcentagem', 'restantes');
+                }
             }
         } else {
             $consumidos = 0;
