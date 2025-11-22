@@ -15,3 +15,25 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+.env
+
+# Docker
+docker-compose.override.yml
+.docker/
+*.dockerfile
+docker-compose.*.yml
+
+# Sail
+.sail/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.backup
+*.tmp

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('meta', function (Blueprint $table) {
+        Schema::create('metas', function (Blueprint $table) {
             $table->id();
             $table->integer('meta');
             $table->date('data');

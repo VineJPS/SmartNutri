@@ -219,21 +219,21 @@
                         src="https://marketplace.canva.com/FaoS8/MAErepFaoS8/1/tl/canva-person-icon-MAErepFaoS8.png"
                         alt="">
                 </div>
-                <h2>{{ $usuario->name }}</h2>
-                <h3>{{ $usuario->email }}</h3>
+                <h2>{{ isset($usuario->name) ? $usuario->name : '' }}</h2>
+                <h3>{{ isset($usuario->email) ? $usuario->email : '' }}</h3>
 
                 <div class="infos">
                     <div class="campoInfor">
-                        <h2 class='tituloCampoInfor'>{{ $historico->peso}}</h2>
+                        <h2 class='tituloCampoInfor'>{{ isset($historico->peso) ? $historico->peso : '' }}</h2>
                         <h3 class='subtituloCampoInfor'>Peso</h3>
                     </div>
                     <div class="campoInfor">
-                        <h2 class='tituloCampoInfor'>{{ $historico->altura}}</h2>
+                        <h2 class='tituloCampoInfor'>{{ isset($historico->altura) ? $historico->altura : '' }}</h2>
                         <h3 class='subtituloCampoInfor'>Altura</h3>
                     </div>
                     <div class="campoInfor">
-                        <h2 class='tituloCampoInfor'>{{ $historico->imc}}</h2>
-                        <h3 class='subtituloCampoInfor'>IMC</h2>
+                        <h2 class='tituloCampoInfor'>{{ isset($historico->imc) ? $historico->imc : '' }}</h2>
+                        <h3 class='subtituloCampoInfor'>IMC</h3>
                     </div>
                 </div>
             </div>
@@ -278,6 +278,7 @@
     </div>
 </body>
 
+<<<<<<< HEAD
 <script>
     const icon = document.getElementById("iconTema");
 
@@ -305,3 +306,6 @@
 
 
 </html>
+=======
+</html>
+>>>>>>> 4acfda87ee6e3813ce61114ab0cf8c5b470a5fc8
