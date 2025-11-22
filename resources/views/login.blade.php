@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    @include('_partials.dark')
     <title>Login</title>
     <style>
         *{
@@ -165,4 +166,30 @@
         </div>
     </main>
 </body>
+
+<script>
+    const icon = document.getElementById("iconTema");
+
+    // Carrega o tema salvo
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+        icon.textContent = "clear_day"; // muda para sol
+    } else {
+        icon.textContent = "bedtime"; // lua
+    }
+
+    function alternarTema() {
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem("theme", "dark");
+            icon.textContent = "clear_day"; // sol
+        } else {
+            localStorage.setItem("theme", "light");
+            icon.textContent = "bedtime"; // lua
+        }
+    }
+</script>
+
+
 </html>

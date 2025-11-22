@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+@include('_partials.dark')
 
   <title>SmartNutri</title>
   <style>
@@ -218,7 +219,7 @@
             <h1 style="font-size: 20px;">Sua Meta de Calorias</h1>
           </div>
         </div>
-        <div class="corpo-card" style="width: 100%; margin: 10px 0; border-radius: 20px;background: #C8E6C9; height: 160px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+        <div class="corpo-card metadiaria" style="width: 100%; margin: 10px 0; border-radius: 20px;background: #C8E6C9; height: 160px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
           <p style="font-size: 20px;">
             Meta diária
           </p>
@@ -311,4 +312,30 @@
   </footer> 
 
 </body>
+<script>
+    const icon = document.getElementById("iconTema");
+
+    // Carrega o tema salvo
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+        icon.textContent = "clear_day"; // muda para sol
+    } else {
+        icon.textContent = "bedtime"; // lua
+    }
+
+    function alternarTema() {
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem("theme", "dark");
+            icon.textContent = "clear_day"; // sol
+        } else {
+            localStorage.setItem("theme", "light");
+            icon.textContent = "bedtime"; // lua
+        }
+    }
+</script>
+
+
+
 </html>

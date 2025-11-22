@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
     <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    @include('_partials.dark')
 
     <style>
         /*Header*/
@@ -265,7 +267,7 @@
                     </div>
 
                     <div class="row-butao">
-                        <input type="submit" id="butao" class="butao1" value="enviar">
+                        <input type="submit" id="butao" class="butao1" value="Salvar">
                         <a href="{{ route('perfil') }}" class="butaovermeio">Cancelar</a>
 
                     </div>
@@ -275,5 +277,31 @@
         </main>
     </div>
 </body>
+
+<script>
+    const icon = document.getElementById("iconTema");
+
+    // Carrega o tema salvo
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+        icon.textContent = "clear_day"; // muda para sol
+    } else {
+        icon.textContent = "bedtime"; // lua
+    }
+
+    function alternarTema() {
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem("theme", "dark");
+            icon.textContent = "clear_day"; // sol
+        } else {
+            localStorage.setItem("theme", "light");
+            icon.textContent = "bedtime"; // lua
+        }
+    }
+</script>
+
+
 
 </html>

@@ -3,7 +3,7 @@
 @section('title', 'Histórico de Alimentos')
 
 @section('css')
-
+    @include('_partials.dark')
 <style>
 
     html{
@@ -770,4 +770,30 @@
         });
 
     </script>
+
+<script>
+    const icon = document.getElementById("iconTema");
+
+    // Carrega o tema salvo
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+        icon.textContent = "clear_day"; // muda para sol
+    } else {
+        icon.textContent = "bedtime"; // lua
+    }
+
+    function alternarTema() {
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem("theme", "dark");
+            icon.textContent = "clear_day"; // sol
+        } else {
+            localStorage.setItem("theme", "light");
+            icon.textContent = "bedtime"; // lua
+        }
+    }
+</script>
+
+
 @endsection

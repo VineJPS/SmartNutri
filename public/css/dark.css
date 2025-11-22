@@ -1,0 +1,76 @@
+/* ===========================
+      MODO ESCURO
+=========================== */
+
+
+body.dark,body.dark form,body.dark main {
+    background: #121212;
+    color: #f1f1f1;
+}
+
+body.dark header, body.dark footer{
+    background: #1e1e1e;
+}
+body.dark .card, body.dark .calc,body.dark .calc>form,body.dark .calcResul{
+    background: #1e1e1e;
+    border: 1px solid black;
+    color: white;
+}
+body.dark .calc>form{
+    border: none;
+}
+body.dark select{
+    color: white;
+    background-color: #2D2D2D;
+    border: 1px solid #565555 !important;
+}
+
+body.dark .corpo-card p{
+    color: white;
+}
+
+body.dark .metadiaria p{
+    color: black;
+}
+
+body.dark input,body.dark .itemLimpar1{
+    background: #2D2D2D !important;
+    color: white;
+    border: 1px solid #565555 !important;
+}
+body.dark .row2>.table, body.dark .table>.table-header{
+    border: 1px solid #565555;
+}
+
+body.dark .butao,body.dark .butao1{
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+    background-color: transparent;
+}
+body.dark .butaovermeio{
+    background-color: transparent;
+}
+
+#tema{
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 40px;
+    height: 40px;
+    z-index: 1000;
+    border-radius: 100px;
+    background: #222; 
+    color: #fff;
+    cursor: pointer;
+    transition: 0.4s;
+
+}
+
+body.dark #tema {
+    background: #fff;   /* fundo claro no tema escuro */
+    color: #000;
+}
+
+#tema:hover{
+    opacity: 50%;
+}

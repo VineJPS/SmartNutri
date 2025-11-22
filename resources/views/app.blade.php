@@ -6,6 +6,7 @@
     <title>@yield('title', 'SmartNutri')</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('css/dark.css') }}">
     <style>
         *{
         margin: 0;
