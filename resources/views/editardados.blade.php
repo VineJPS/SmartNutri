@@ -278,7 +278,6 @@
     </div>
 </body>
 
-<<<<<<< HEAD
 <script>
     const icon = document.getElementById("iconTema");
 
@@ -303,9 +302,4 @@
     }
 </script>
 
-
-
 </html>
-=======
-</html>
->>>>>>> 4acfda87ee6e3813ce61114ab0cf8c5b470a5fc8

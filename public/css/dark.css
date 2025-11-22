@@ -70,7 +70,11 @@ body.dark #tema {
     background: #fff;   /* fundo claro no tema escuro */
     color: #000;
 }
+body.dark .campoauth {
+    background-color: #1E1E1E;
+}
 
 #tema:hover{
-    opacity: 50%;
+    opacity: 75%;
+    transform: scale(1.3);
 }

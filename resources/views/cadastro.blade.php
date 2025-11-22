@@ -133,7 +133,7 @@
                 <p>Cuidando da sua saúde</p>
             </div>
 
-            <form action="{{ route('criarUsuario') }}" method="POST">
+            <form class="campoauth" action="{{ route('criarUsuario') }}" method="POST">
                 @csrf
                 <h3>Nome Completo</h3>
                 <div class="campos">
