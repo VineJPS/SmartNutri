@@ -226,11 +226,39 @@
           <h2 style="font-size: 40px; color: #388E3C;">{{ $meta }}kcal</h2>
         </div>
         <div class="linha">
-          <div class="progresso" style="width: {{ $porcentagem }}%"></div>
+          <div class="progresso" style="width: {{ $porcentagem }}%;"></div>
         </div>
         <div class="consul">
           <p>Consumido: {{ $consumidos }}kcal</p>
           <p>Restante: {{ $restantes }}kcal</p>
+        </div>
+      </div>
+
+      <!-- Meta de hidratacao -->
+
+      <div class="card caloria" style="width: 95%; height: auto; cursor: default;">
+        <div class="card-titulo" style="width: 100%; color: #3498DB;">
+          <div class="icon">
+            <span class="material-symbols-outlined">
+            water_drop
+            </span>
+          </div>
+          <div class="nome-card">
+            <h1 style="font-size: 20px; color: #3498DB;">Controle de Hidratação</h1>
+          </div>
+        </div>
+        <div class="corpo-card metadiaria" style="width: 100%; margin: 10px 0; border-radius: 20px;background: #3498DB50; height: 160px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+          <p style="font-size: 20px;">
+            Meta diária
+          </p>
+          <h2 style="font-size: 40px; color: #3498DB;">0L / 2L</h2>
+        </div>
+        <div class="linha">
+          <div class="progresso" style="width: 10%;  background-color: #3498DB;"></div>
+        </div>
+        <div class="consul">
+          <p>Continue se Hidratando</p>
+          <p>Restante: {{ $restantes }}L</p>
         </div>
       </div>
 
@@ -300,6 +328,42 @@
           <div class="corpo-card">
             <p>
               Altera sua meta de calorias.
+            </p>
+          </div>
+      </a>
+
+      <a class="card" href="{{ route('hidratacao') }}">
+          <div class="card-titulo">
+            <div class="icon">
+              <span class="material-symbols-outlined">
+                water_drop
+              </span>
+            </div>
+            <div class="nome-card">
+              <h1>Controle de Hidratação</h1>
+            </div>
+          </div>
+          <div class="corpo-card">
+            <p>
+              Altere sua meta diária de hidratação.
+            </p>
+          </div>
+      </a>
+
+      <a class="card" href="#">
+          <div class="card-titulo">
+            <div class="icon">
+              <span class="material-symbols-outlined">
+                assignment
+              </span>
+            </div>
+            <div class="nome-card">
+              <h1>Relatorio Semanal</h1>
+            </div>
+          </div>
+          <div class="corpo-card">
+            <p>
+              Veja seu relatório semanal aqui.
             </p>
           </div>
       </a>

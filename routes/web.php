@@ -58,8 +58,11 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/alimentos/{id}', [App\Http\Controllers\Alimentos::class, 'update'])->name('alimentos.update');
     // Route::get('/modal', [App\Http\Controllers\Principal::class, 'modal'])->name('modal');
 
-// Meta
+// Meta de Calorias
     Route::get('/meta', [App\Http\Controllers\Principal::class, 'meta'])->name('meta');
     Route::post('/meta/define', [App\Http\Controllers\Metas::class, 'definirMeta'])->name('meta.definir');
     Route::post('/meta/remove', [App\Http\Controllers\Metas::class, 'removerMeta'])->name('meta.remove');
+    
+// Meta de Hidratação
+    Route::get('/hidratacao', [App\Http\Controllers\Principal::class, 'hidratacao'])->name('hidratacao');
 });

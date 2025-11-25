@@ -71,4 +71,8 @@ class Principal extends Controller
     {
         return View('meta');
     }
+    function hidratacao()
+    {
+        return View('hidratacao');
+    }
 }

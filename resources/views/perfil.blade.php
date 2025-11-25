@@ -300,7 +300,7 @@
         </main>
         <footer>
 
-            <form action="{{ route('logout') }}" method="get">
+            <form action="{{ route('logout') }}" method="get" style="background: transparent;">
                 @csrf
                 <button type="submit" class="logout">
                     <i id="iconLogout" class="ph ph-sign-out"></i>
