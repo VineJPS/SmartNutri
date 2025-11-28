@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('metas', function (Blueprint $table) {
+        Schema::create('hidratacoes', function (Blueprint $table) {
             $table->id();
             $table->integer('meta');
+            $table->integer('consumido')->nullable();
             $table->date('data');
             $table->tinyInteger('status', false, true)->default(0);
             $table->foreignId('user_id')
                   ->references('id')
                   ->on('users')
                   ->onDelete('Cascade');
-
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('meta');
+        Schema::dropIfExists('hidratacaos');
     }
 };

@@ -59,10 +59,18 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/modal', [App\Http\Controllers\Principal::class, 'modal'])->name('modal');
 
 // Meta de Calorias
-    Route::get('/meta', [App\Http\Controllers\Principal::class, 'meta'])->name('meta');
-    Route::post('/meta/define', [App\Http\Controllers\Metas::class, 'definirMeta'])->name('meta.definir');
-    Route::post('/meta/remove', [App\Http\Controllers\Metas::class, 'removerMeta'])->name('meta.remove');
+    Route::get('/meta', [App\Http\Controllers\Principal::class, 'metaCaloria'])->name('meta.caloria');
+    Route::post('/meta/kcal/define', [App\Http\Controllers\Metas::class, 'definirCaloria'])->name('meta.kcal.definir');
+    Route::post('/meta/kcal/remove', [App\Http\Controllers\Metas::class, 'removerCaloria'])->name('meta.kcal.remove');
     
 // Meta de Hidratação
-    Route::get('/hidratacao', [App\Http\Controllers\Principal::class, 'hidratacao'])->name('hidratacao');
+    Route::get('/hidratacao', [App\Http\Controllers\Principal::class, 'metaHidratacao'])->name('meta.hidratacao');
+    Route::post('/meta/hidratacao/define', [App\Http\Controllers\Metas::class, 'definirHidratacao'])->name('meta.hidratacao.definir');
+    Route::get('/meta/hidratacao/more', [App\Http\Controllers\Metas::class, 'moreHidratacao'])->name('meta.hidratacao.more');
+    Route::get('/meta/hidratacao/less', [App\Http\Controllers\Metas::class, 'lessHidratacao'])->name('meta.hidratacao.less');
+    Route::post('/meta/hidratacao/remove', [App\Http\Controllers\Metas::class, 'removerHidratacao'])->name('meta.hidratacao.remove');
+
+// Relatório Semanal
+    Route::get('/relatorio', [App\Http\Controllers\Principal::class, 'relatorio'])->name('relatorio');
+    Route::get('/relatorio/filtrar', [App\Http\Controllers\Relatorio::class, 'filtrar'])->name('relatorio.filter');
 });

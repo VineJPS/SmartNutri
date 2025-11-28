@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Alimento;
 
 
-class Meta extends Model
+class Caloria extends Model
 {
     use HasFactory;
 
-    protected $table = "metas";
+    protected $table = "calorias";
     protected $fillable = ['user_id', 'data', 'meta', 'status'];
 
     protected $casts = [
@@ -36,10 +37,10 @@ class Meta extends Model
     public static function definirMeta($userId, $metaValor){
         $data = today()->format('Y-m-d');
 
-        $meta = self::findOut($userId, $data);
+        $caloria = self::findOut($userId, $data);
 
-        if($meta) {
-            $meta->update([
+        if($caloria) {
+            $caloria->update([
                 'meta'=> $metaValor
             ]);
         } else {
@@ -54,16 +55,16 @@ class Meta extends Model
     public static function removerMeta($userId){
         $data = today()->format('Y-m-d');
 
-        $meta = self::findOut($userId, $data);
+        $caloria = self::findOut($userId, $data);
 
-        if($meta) {
+        if($caloria) {
             $metaValor = 0;
-            $meta->update([
+            $caloria->update([
                 'meta'=> $metaValor,
             ]);
-            return redirect()->back()->with('success','Meta removida com sucesso!');
+            return redirect()->back()->with('success','Caloria removida com sucesso!');
         } else {   
-            return redirect()->route('meta')->with('Error','A meta não existe!');
+            return redirect()->route('meta.caloria')->with('Error','A caloria não existe!');
         }
     }
 
@@ -71,40 +72,44 @@ class Meta extends Model
     {
         $user = auth()->user();
 
+
         $metaEnt = self::findOut(auth()->user()->id, null);
 
         if($metaEnt) {
-            $meta = $metaEnt->meta;
-            if ($meta == 0){
-                $consumidos = 0;
-                $porcentagem = 0;
-                $restantes = 0;
-                $meta = 0;
+            $metaC = $metaEnt->meta;
+            if ($metaC == 0){
+                $consumidosC = 0;
+                $porcentagemC = 0;
+                $restantesC = 0;
+                $metaC = 0;
 
-                return compact('meta', 'consumidos', 'porcentagem', 'restantes');
+                return compact('metaC', 'consumidosC', 'porcentagemC', 'restantesC');
             } else{
     
-                $consumidos = Alimento::where('user_id', $user->id)
+
+                $consumidosC = Alimento::where('user_id', $user->id)
                                     ->whereDate('data', today())
                                     ->sum('kcal');
+
                 
-                $porcentagem = min(100, max(0, ($consumidos / $meta) * 100));
-                $restantes = max(0, $meta - $consumidos);
+                $porcentagemC = min(100, max(0, ($consumidosC / $metaC) * 100));
+
+                $restantesC = max(0, $metaC - $consumidosC);
     
-                if ($restantes <= 0) {
+                if ($restantesC <= 0) {
                     $metaEnt->update(['status'=> 1]);
-                    return compact('meta', 'consumidos', 'porcentagem', 'restantes');
+                    return compact('metaC', 'consumidosC', 'porcentagemC', 'restantesC');
                 } else {
-                    return compact('meta', 'consumidos', 'porcentagem', 'restantes');
+                    return compact('metaC', 'consumidosC', 'porcentagemC', 'restantesC');
                 }
             }
         } else {
-            $consumidos = 0;
-            $porcentagem = 0;
-            $restantes = 0;
-            $meta = 0;
+            $consumidosC = 0;
+            $porcentagemC = 0;
+            $restantesC = 0;
+            $metaC = 0;
 
-            return compact('meta', 'consumidos', 'porcentagem', 'restantes');
+            return compact('metaC', 'consumidosC', 'porcentagemC', 'restantesC');
         }
     }
 }

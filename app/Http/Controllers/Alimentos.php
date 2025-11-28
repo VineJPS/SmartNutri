@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Alimento;
-use App\Models\Meta;
+use App\Models\Caloria;
 
 class Alimentos extends Controller
 {
@@ -48,18 +48,18 @@ class Alimentos extends Controller
         ]);
 
         $id = auth()->id();
-        $meta = Meta::findOut($id, null);
+        $caloria = Caloria::findOut($id, null);
 
-        if ($meta){
-            Meta::calcularProgresso();
+        if ($caloria){
+            Caloria::calcularProgresso();
             return redirect()->route('alimentos')->with('success','Alimento registrado com sucesso!');
         } else {
             $data = today()->subDay()->format('Y-m-d');
-            $meta = Meta::findOut($id, $data);
-            if ($meta){
-                $metaValor = $meta->meta;
-                Meta::definirMeta($id, $metaValor);
-                Meta::calcularProgresso();
+            $caloria = Caloria::findOut($id, $data);
+            if ($caloria){
+                $metaValor = $caloria->meta;
+                Caloria::definirMeta($id, $metaValor);
+                Caloria::calcularProgresso();
                 return redirect()->route('index')->with('success','Alimento registrado com sucesso!');
             } else {
                 return redirect()->route('alimentos')->with('success','Alimento registrado com sucesso!');

@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Meta')
+@section('title', 'Caloria')
 
 @section('css')
     @include('_partials.dark')
@@ -126,21 +126,21 @@
 @endsection
 
 @section('content')
-<form class="card" action="{{ route('meta.definir') }}" method="post">
+<form class="card" action="{{ route('meta.kcal.definir') }}" method="post">
     @csrf
         <div class="card-header">
-            <h1>Definir Meta de Calorias</h1>
+            <h1>Definir Caloria de Calorias</h1>
             <hr/>
         </div>
         <div class="card-body">
-            <div class="title"><span class="asterisco">*</span> Nova Meta Diária (kcal):</div>
-            <input type="text" name="meta" id="meta" value="2000">
+            <div class="title"><span class="asterisco">*</span> Nova Caloria Diária (kcal):</div>
+            <input type="text" name="meta" id="meta" value={{ $caloria->meta ?? '' }}>
         </div>
         <div class="card-button">
-            <button class="save" type="submit">Salvar Meta</button>
+            <button class="save" type="submit">Salvar Caloria</button>
         </form>
 
-        <form class="button-cancel" action="{{ route('meta.remove') }}" method="post">
+        <form class="button-cancel" action="{{ route('meta.kcal.remove') }}" method="post">
             @csrf
             <button class="cancel" type="submit">Remover</button>
         </div>

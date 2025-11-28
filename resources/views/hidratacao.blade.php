@@ -139,6 +139,9 @@
         align-items: center;
         padding: .75rem;
         border-radius: 100px;
+        border: none;
+        color: white;
+        text-align: center;
     }
     .buttons .less{
         width: 48px;
@@ -176,42 +179,50 @@
           <p style="font-size: 20px;">
             Meta diária
           </p>
-          <h2 style="font-size: 40px; color: #3498DB;">0L / 2L</h2>
+          <h2 style="font-size: 40px; color: #3498DB;">{{ ($consumidosH / 1000) ?? '0' }}L / {{ ($metaH / 1000) ?? '0' }}L </h2>
         </div>
         <div class="linha">
-          <div class="progresso" style="width: 10%"></div>
+          <div class="progresso" style="width: {{ $porcentagemH ?? '0' }}%;  background-color: #3498DB;"></div>
         </div>
         <div class="consul" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
           <p>Continue se Hidratando</p>
-          <p>Restante: 3L</p>
+          <p>Restante: {{ $restantesH }}L</p>
         </div>
         <div class="buttons">
-            <div class="more">
-                <span class="material-symbols-outlined">
-                    add
-                </span>
-            </div>
-            <div class="less">
-                <p style="font-size: 48px;">-</p>
-            </div>
+             <form action="{{ route('meta.hidratacao.less') }}" method="get">  
+                @csrf
+                    <button type="submit" class="less">
+                        <span class="material-symbols-outlined">
+                            remove
+                        </span>
+                    </button>
+            </form>
+            <form action="{{ route('meta.hidratacao.more') }}" method="get">
+                @csrf
+                    <button type="submit" class="more">
+                        <span class="material-symbols-outlined">
+                            add
+                        </span>
+                    </button>
+            </form>
         </div>
       </div>
 
-<form class="card" action="{{ route('meta.definir') }}" method="post">
+<form class="card" action="{{ route('meta.hidratacao.definir') }}" method="post">
     @csrf
         <div class="card-header">
             <h1>Definir Meta de Hidratação</h1>
             <hr/>
         </div>
         <div class="card-body">
-            <div class="title"><span class="asterisco">*</span> Meta de Água (litros):</div>
-            <input type="text" name="meta" id="meta" value="2000">
+            <div class="title"><span class="asterisco">*</span> Meta de Água (mililitros):</div>
+            <input type="text" name="meta" id="meta" value={{ $metaH ?? '' }}>
         </div>
         <div class="card-button">
             <button class="save" type="submit">Salvar Meta</button>
         </form>
 
-        <form class="button-cancel" action="{{ route('meta.remove') }}" method="post">
+        <form class="button-cancel" action="{{ route('meta.hidratacao.remove') }}" method="post">
             @csrf
             <button class="cancel" type="submit">Remover</button>
         </div>

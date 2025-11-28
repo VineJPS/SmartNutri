@@ -223,14 +223,14 @@
           <p style="font-size: 20px;">
             Meta diária
           </p>
-          <h2 style="font-size: 40px; color: #388E3C;">{{ $meta }}kcal</h2>
+          <h2 style="font-size: 40px; color: #388E3C;">{{ $metaC }}kcal</h2>
         </div>
         <div class="linha">
-          <div class="progresso" style="width: {{ $porcentagem }}%;"></div>
+          <div class="progresso" style="width: {{ $porcentagemC }}%;"></div>
         </div>
         <div class="consul">
-          <p>Consumido: {{ $consumidos }}kcal</p>
-          <p>Restante: {{ $restantes }}kcal</p>
+          <p>Consumido: {{ $consumidosC }}kcal</p>
+          <p>Restante: {{ $restantesC }}kcal</p>
         </div>
       </div>
 
@@ -251,14 +251,14 @@
           <p style="font-size: 20px;">
             Meta diária
           </p>
-          <h2 style="font-size: 40px; color: #3498DB;">0L / 2L</h2>
+          <h2 style="font-size: 40px; color: #3498DB;">{{ ($consumidosH / 1000) }}L/{{ ($metaH / 1000) }}L</h2>
         </div>
         <div class="linha">
-          <div class="progresso" style="width: 10%;  background-color: #3498DB;"></div>
+          <div class="progresso" style="width: {{ $porcentagemH ?? '0' }}%;  background-color: #3498DB;"></div>
         </div>
         <div class="consul">
           <p>Continue se Hidratando</p>
-          <p>Restante: {{ $restantes }}L</p>
+          <p>Restante: {{ $restantesH }}L</p>
         </div>
       </div>
 
@@ -314,7 +314,7 @@
         </div>
       </a>
 
-      <a class="card" href="{{ route('meta') }}">
+      <a class="card" href="{{ route('meta.caloria') }}">
           <div class="card-titulo">
             <div class="icon">
               <span class="material-symbols-outlined">
@@ -332,7 +332,7 @@
           </div>
       </a>
 
-      <a class="card" href="{{ route('hidratacao') }}">
+      <a class="card" href="{{ route('meta.hidratacao') }}">
           <div class="card-titulo">
             <div class="icon">
               <span class="material-symbols-outlined">
@@ -350,7 +350,7 @@
           </div>
       </a>
 
-      <a class="card" href="#">
+      <a class="card" href="{{ route('relatorio') }}">
           <div class="card-titulo">
             <div class="icon">
               <span class="material-symbols-outlined">
